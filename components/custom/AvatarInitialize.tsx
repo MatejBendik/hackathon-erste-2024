@@ -23,7 +23,7 @@ const AvatarInitialize = ({ onNext }: AvatarInitializeProps) => {
                 <div className="flex w-full justify-between">
 
                     {/* Avatar Customization */}
-                    <div className="flex flex-col items-center p-4 mr-28 bg-white border-[3px] border-[#2870ED] rounded-lg w-[328px] h-[320px] relative">
+                    <div className="flex flex-col items-center p-4 mr-28 bg-white border-[3px] border-[#2870ED] rounded-[25px] w-[328px] h-[320px] relative">
                         {/* Avatar Image */}
                         <img src="/Avatar.png" alt="avatar" className="mt-3 absolute w-[135px] h-[250px] rounded-lg" />
 
