@@ -1,15 +1,15 @@
-import React from 'react'
 import { Button } from '../ui/button';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { Textarea } from '../ui/textarea';
-import { Input } from '../ui/input';
 
 interface AvatarDetailsProps {
   onBack: () => void;
   onNext: () => void;
+  updateFormData: (name: string, value: string) => void;
+  formData: { education_and_work_experience: string, long_term_goals_and_dreams: string, health_preferences_and_habits: string, financial_situation_and_goals: string, relationships_and_family: string, preffered_hobbies_and_activities: string };
 }
 
-const AvatarDetails = ({ onBack, onNext }: AvatarDetailsProps) => {
+const AvatarDetails = ({ onBack, onNext, updateFormData, formData }: AvatarDetailsProps) => {
   return (
     <div className="flex items-center justify-center bg-gray-100 dark:bg-gray-700">
       <div className="flex flex-col items-center w-auto rounded-[25px] w-[800px] mt-28 bg-[#F3F3F3] dark:bg-gray-800 p-8 shadow-[0px_8px_18px_11px_rgba(0,_0,_0,_0.1)]">
@@ -24,28 +24,46 @@ const AvatarDetails = ({ onBack, onNext }: AvatarDetailsProps) => {
           {/* Form Fields */}
           <div className="flex flex-col w-full gap-5">
             <Textarea
+              name='education_and_work_experience'
               placeholder="Education and work experience"
               className="border-[3px] border-[#2870ED] rounded-lg p-2 resize-none dark:bg-gray-700"
+              value={formData.education_and_work_experience}
+              onChange={(e) => updateFormData(e.target.name, e.target.value)}
             />
             <Textarea
+              name='long_term_goals_and_dreams'
               placeholder="Long-term goals and dreams"
               className="border-[3px] border-[#2870ED] rounded-lg p-2 resize-none dark:bg-gray-700"
+              value={formData.long_term_goals_and_dreams}
+              onChange={(e) => updateFormData(e.target.name, e.target.value)}
             />
             <Textarea
+              name='health_preferences_and_habits'
               placeholder="Health preferences and habits"
               className="border-[3px] border-[#2870ED] rounded-lg p-2 resize-none dark:bg-gray-700"
+              value={formData.health_preferences_and_habits}
+              onChange={(e) => updateFormData(e.target.name, e.target.value)}
             />
             <Textarea
+              name='financial_situation_and_goals'
               placeholder="Financial situation and goals"
               className="border-[3px] border-[#2870ED] rounded-lg p-2 resize-none dark:bg-gray-700"
+              value={formData.financial_situation_and_goals}
+              onChange={(e) => updateFormData(e.target.name, e.target.value)}
             />
             <Textarea
+              name='relationships_and_family'
               placeholder="Relationships and family"
               className="border-[3px] border-[#2870ED] rounded-lg p-2 resize-none dark:bg-gray-700"
+              value={formData.relationships_and_family}
+              onChange={(e) => updateFormData(e.target.name, e.target.value)}
             />
             <Textarea
+              name='preffered_hobbies_and_activities'
               placeholder="Preffered hobbies and activities"
               className="border-[3px] border-[#2870ED] rounded-lg p-2 resize-none dark:bg-gray-700"
+              value={formData.preffered_hobbies_and_activities}
+              onChange={(e) => updateFormData(e.target.name, e.target.value)}
             />
           </div>
         </div>
