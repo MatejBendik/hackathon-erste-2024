@@ -29,26 +29,26 @@ const AvatarInitialize = ({ onNext }: AvatarInitializeProps) => {
 
                         {/* Arrow Controls */}
                         <div className="flex w-full justify-between items-center mt-6 mb-6">
-                            <Button className="w-[50px] h-[50px] text-[#2F74EE] dark:text-white dark:bg-gray-800" variant="outline" size="icon">
+                            <Button className="w-[50px] h-[50px] text-[#2F74EE] dark:text-white dark:bg-gray-800 dark:hover:text-[#2F74EE]" variant="outline" size="icon">
                                 <ChevronLeft />
                             </Button>
-                            <Button className="w-[50px] h-[50px] text-[#2F74EE] dark:text-white dark:bg-gray-800" variant="outline" size="icon">
+                            <Button className="w-[50px] h-[50px] text-[#2F74EE] dark:text-white dark:bg-gray-800 dark:hover:text-[#2F74EE]" variant="outline" size="icon">
                                 <ChevronRight />
                             </Button>
                         </div>
                         <div className="flex w-full justify-between items-center mb-6">
-                            <Button className="w-[50px] h-[50px] text-[#2F74EE] dark:text-white dark:bg-gray-800" variant="outline" size="icon">
+                            <Button className="w-[50px] h-[50px] text-[#2F74EE] dark:text-white dark:bg-gray-800 dark:hover:text-[#2F74EE]" variant="outline" size="icon">
                                 <ChevronLeft />
                             </Button>
-                            <Button className="w-[50px] h-[50px] text-[#2F74EE] dark:text-white dark:bg-gray-800" variant="outline" size="icon">
+                            <Button className="w-[50px] h-[50px] text-[#2F74EE] dark:text-white dark:bg-gray-800 dark:hover:text-[#2F74EE]" variant="outline" size="icon">
                                 <ChevronRight />
                             </Button>
                         </div>
                         <div className="flex w-full justify-between items-center">
-                            <Button className="w-[50px] h-[50px] text-[#2F74EE] dark:text-white dark:bg-gray-800" variant="outline" size="icon">
+                            <Button className="w-[50px] h-[50px] text-[#2F74EE] dark:text-white dark:bg-gray-800 dark:hover:text-[#2F74EE]" variant="outline" size="icon">
                                 <ChevronLeft />
                             </Button>
-                            <Button className="w-[50px] h-[50px] text-[#2F74EE] dark:text-white dark:bg-gray-800" variant="outline" size="icon">
+                            <Button className="w-[50px] h-[50px] text-[#2F74EE] dark:text-white dark:bg-gray-800 dark:hover:text-[#2F74EE]" variant="outline" size="icon">
                                 <ChevronRight />
                             </Button>
                         </div>
@@ -60,22 +60,22 @@ const AvatarInitialize = ({ onNext }: AvatarInitializeProps) => {
                             <Input
                                 type="text"
                                 placeholder="Meno"
-                                className="border-[3px] border-[#2870ED]"
+                                className="border-[3px] border-[#2870ED] dark:bg-gray-700"
                             />
                             <Input
                                 type="text"
                                 placeholder="Pohlavie"
-                                className="border-[3px] border-[#2870ED]"
+                                className="border-[3px] border-[#2870ED] dark:bg-gray-700"
                             />
                         </div>
                         <Input
                             type="date"
                             placeholder="Dátum narodenia"
-                            className="border-[3px] border-[#2870ED]"
+                            className="border-[3px] border-[#2870ED] dark:bg-gray-700"
                         />
                         <Textarea
                             placeholder="Záľuby"
-                            className="border-[3px] border-[#2870ED] rounded-lg p-2 h-[120px] resize-none"
+                            className="border-[3px] border-[#2870ED] rounded-lg p-2 h-[120px] resize-none dark:bg-gray-700"
                         />
                     </div>
 
