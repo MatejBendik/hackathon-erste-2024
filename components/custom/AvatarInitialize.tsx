@@ -7,33 +7,38 @@ import { Button } from "@/components/ui/button";
 interface AvatarInitializeProps {
     onNext: () => void;
     updateFormData: (name: string, value: string) => void;
-    formData: { name: string; gender: string; birthDate: string; hobbies: string };
+    formData: { name: string; gender: string; birthDate: string; hobbies: string, currentHairIndex: number, currentBodyIndex: number };
 }
 
 const AvatarInitialize = ({ onNext, updateFormData, formData }: AvatarInitializeProps) => {
     const hairImages = ["/Hair1.png", "/Hair2.png", "/Hair3.png", "/Hair4.png"];
     const bodyImages = ["/Body1.png", "/Body2.png", "/Body3.png", "/Body4.png"];
-    const [currentHairIndex, setCurrentHairIndex] = useState(0);
-    const [currentBodyIndex, setCurrentBodyIndex] = useState(0);
+
+    const [currentHairIndex, setCurrentHairIndex] = useState(formData.currentHairIndex || 0);
+    const [currentBodyIndex, setCurrentBodyIndex] = useState(formData.currentBodyIndex || 0);
 
     const handleNextHair = () => {
-        setCurrentHairIndex((prevIndex) => (prevIndex + 1) % hairImages.length);
+        const newHairIndex = (currentHairIndex + 1) % hairImages.length;
+        setCurrentHairIndex(newHairIndex);
+        updateFormData("currentHairIndex", newHairIndex.toString());
     };
 
     const handlePrevHair = () => {
-        setCurrentHairIndex((prevIndex) =>
-            prevIndex === 0 ? hairImages.length - 1 : prevIndex - 1
-        );
+        const newHairIndex = currentHairIndex === 0 ? hairImages.length - 1 : currentHairIndex - 1;
+        setCurrentHairIndex(newHairIndex);
+        updateFormData("currentHairIndex", newHairIndex.toString());
     };
 
     const handleNextBody = () => {
-        setCurrentBodyIndex((prevIndex2) => (prevIndex2 + 1) % bodyImages.length);
+        const newBodyIndex = (currentBodyIndex + 1) % bodyImages.length;
+        setCurrentBodyIndex(newBodyIndex);
+        updateFormData("currentBodyIndex", newBodyIndex.toString());
     };
 
     const handlePrevBody = () => {
-        setCurrentBodyIndex((prevIndex2) =>
-            prevIndex2 === 0 ? bodyImages.length - 1 : prevIndex2 - 1
-        );
+        const newBodyIndex = currentBodyIndex === 0 ? bodyImages.length - 1 : currentBodyIndex - 1;
+        setCurrentBodyIndex(newBodyIndex);
+        updateFormData("currentBodyIndex", newBodyIndex.toString());
     };
 
     return (

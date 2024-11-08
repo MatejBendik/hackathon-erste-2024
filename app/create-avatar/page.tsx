@@ -13,9 +13,13 @@ const CreateAvatar = () => {
     gender: "",
     birthDate: "",
     hobbies: "",
+    currentHairIndex: 0,
+    currentBodyIndex: 0,
   });
 
-  // Function to update formData based on input name
+
+  console.log(formData);
+
   const updateFormData = (name: string, value: string) => {
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
