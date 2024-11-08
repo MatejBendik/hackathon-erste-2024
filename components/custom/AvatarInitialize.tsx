@@ -66,8 +66,8 @@ const AvatarInitialize = ({ onNext }: AvatarInitializeProps) => {
                 </div>
 
             </div>
-            <Button className="ml-10 absolute left-3/4 w-[50px] h-[50px] text-[#2F74EE]" variant="outline" size="icon">
-                <ChevronRight onClick={onNext}/>
+            <Button onClick={onNext} className="ml-10 absolute left-3/4 w-[50px] h-[50px] text-[#2F74EE]" variant="outline" size="icon">
+                <ChevronRight />
             </Button>
         </div>
     );
