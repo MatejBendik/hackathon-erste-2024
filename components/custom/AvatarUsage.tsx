@@ -10,54 +10,31 @@ interface AvatarUsageProps {
 
 const AvatarUsage = ({ onBack }: AvatarUsageProps) => {
   return (
-    <div className="flex items-center justify-center h-screen bg-gray-100">
+    <div className="flex items-center justify-center h-screen bg-gray-100 dark:bg-gray-700">
 
-      <div className="flex flex-col items-center w-auto  h-[530px] rounded-[25px] bg-[#F3F3F3] p-8 shadow-[0px_8px_18px_11px_rgba(0,_0,_0,_0.1)]">
+      <div className="flex flex-col items-center w-auto  h-[530px] rounded-[25px] bg-[#F3F3F3] dark:bg-gray-800 p-8 shadow-[0px_8px_18px_11px_rgba(0,_0,_0,_0.1)]">
 
         {/* Header */}
 
         <span className="whitespace-nowrap text-[48px] mb-16 font-bold bg-gradient-to-r tracking-normal from-purple-500 to-blue-500 inline-block text-transparent bg-clip-text">
-                    Na čo chcete použiť svojho AI asistenta?
+          Na čo chcete použiť svojho AI asistenta?
         </span>
 
         {/* Main Content */}
         <div className="flex w-full justify-between">
-
-          {/* Avatar Customization */}
-          <div className="flex flex-col items-center p-4 mr-28 bg-white border-[3px] border-[#2870ED] rounded-lg w-[328px] h-[320px]">
-            {/* Avatar Image */}
-
-
-            {/* Arrow Controls */}
-
-          </div>
-
           {/* Form Fields */}
           <div className="flex flex-col w-[300px] space-y-4">
-            <div className="flex space-x-4">
-              <Input
-                type="text"
-                placeholder="Meno"
-                className="border-[3px] border-[#2870ED]"
-              />
-              <Input
-                type="text"
-                placeholder="Pohlavie"
-                className="border-[3px] border-[#2870ED]"
-              />
-            </div>
             <Input
-              type="date"
-              placeholder="Dátum narodenia"
+              type="text"
+              placeholder="Meno"
               className="border-[3px] border-[#2870ED]"
-
             />
-            <Textarea
-              placeholder="Záľuby"
-              className="border-[3px] border-[#2870ED] rounded-lg p-2 h-[120px] resize-none"
+            <Input
+              type="text"
+              placeholder="Pohlavie"
+              className="border-[3px] border-[#2870ED]"
             />
           </div>
-
         </div>
 
         {/* Dice Icon */}
