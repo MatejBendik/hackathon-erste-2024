@@ -2,10 +2,12 @@
 
 import { SignedIn, SignedOut, UserButton, SignInButton } from "@clerk/nextjs";
 import * as React from "react"
-import { Moon, MoonIcon, Sun } from "lucide-react"
+import { Moon, Sun } from "lucide-react"
 import { useTheme } from "next-themes"
 
 import { Button } from "@/components/ui/button"
+import Image from 'next/image'
+
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 
 const Navbar = () => {
@@ -13,23 +15,23 @@ const Navbar = () => {
 
   return (
     <nav className="flex justify-between items-center px-8 py-4 bg-gray-100 dark:bg-gray-900 shadow-md">
-      <div className="text-2xl font-bold text-gray-800 dark:text-white">
-        My AI Version
-      </div>
+      {/* Logo and clickable title */}
+      <a href="/" className="flex items-center space-x-2 text-2xl font-bold text-gray-800 dark:text-white hover:text-blue-600 duration-200 dark:hover:text-blue-400">
+        <Image
+          src="/logo.jpg"
+          width={35}
+          height={35}
+          alt="Erste AI logo"
+          className="rounded-full"
+        />
+        <span>My AI Version</span>
+      </a>
 
       <div className="hidden md:flex space-x-6">
-        <a href="/" className="text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400">
-          Home
-        </a>
-        <a href="/about" className="text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400">
-          About
-        </a>
-        <a href="/features" className="text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400">
-          Features
-        </a>
-        <a href="/contact" className="text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400">
-          Contact
-        </a>
+        <a href="/" className="text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400">Home</a>
+        <a href="/about" className="text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400">About</a>
+        <a href="/features" className="text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400">Features</a>
+        <a href="/contact" className="text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400">Contact</a>
       </div>
 
       <div className="flex items-center space-x-4">
