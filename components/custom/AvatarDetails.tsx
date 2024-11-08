@@ -26,27 +26,27 @@ const AvatarDetails = ({ onBack, onNext }: AvatarDetailsProps) => {
           <div className="flex flex-col w-full gap-5">
             <Textarea
               placeholder="Vzdelanie a profesia"
-              className="border-[3px] border-[#2870ED] rounded-lg p-2 resize-none"
+              className="border-[3px] border-[#2870ED] rounded-lg p-2 resize-none dark:bg-gray-700"
             />
             <Textarea
               placeholder="Dlhodobé ciele"
-              className="border-[3px] border-[#2870ED] rounded-lg p-2 resize-none"
+              className="border-[3px] border-[#2870ED] rounded-lg p-2 resize-none dark:bg-gray-700"
             />
             <Textarea
               placeholder="Zdravotné preferencie a návyky"
-              className="border-[3px] border-[#2870ED] rounded-lg p-2 resize-none"
+              className="border-[3px] border-[#2870ED] rounded-lg p-2 resize-none dark:bg-gray-700"
             />
             <Textarea
               placeholder="Finančná situácia"
-              className="border-[3px] border-[#2870ED] rounded-lg p-2 resize-none"
+              className="border-[3px] border-[#2870ED] rounded-lg p-2 resize-none dark:bg-gray-700"
             />
             <Textarea
               placeholder="Vzťahy a rodinný status"
-              className="border-[3px] border-[#2870ED] rounded-lg p-2 resize-none"
+              className="border-[3px] border-[#2870ED] rounded-lg p-2 resize-none dark:bg-gray-700"
             />
             <Textarea
               placeholder="Preferovaný životný štýl a hodnoty"
-              className="border-[3px] border-[#2870ED] rounded-lg p-2 resize-none"
+              className="border-[3px] border-[#2870ED] rounded-lg p-2 resize-none dark:bg-gray-700"
             />
           </div>
 
@@ -58,10 +58,10 @@ const AvatarDetails = ({ onBack, onNext }: AvatarDetailsProps) => {
         </div>
 
       </div>
-      <Button onClick={onBack} className="ml-8s absolute left-[19%] w-[50px] h-[50px] text-[#2F74EE]" variant="outline" size="icon">
+      <Button onClick={onBack} className="ml-8s absolute left-[19%] w-[50px] h-[50px] text-[#2F74EE] dark:text-white dark:bg-gray-800 dark:hover:text-[#2F74EE]" variant="outline" size="icon">
         <ChevronLeft />
       </Button>
-      <Button onClick={onNext} className="ml-10 absolute left-3/4 w-[50px] h-[50px] text-[#2F74EE]" variant="outline" size="icon">
+      <Button onClick={onNext} className="ml-10 absolute left-3/4 w-[50px] h-[50px] text-[#2F74EE] dark:text-white dark:bg-gray-800 dark:hover:text-[#2F74EE]" variant="outline" size="icon">
         <ChevronRight />
       </Button>
     </div>
