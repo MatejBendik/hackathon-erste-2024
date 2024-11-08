@@ -15,6 +15,7 @@ const CreateAvatar = () => {
     hobbies: "",
     currentHairIndex: 0,
     currentBodyIndex: 0,
+    currentMouthIndex: 0,
   });
 
 
