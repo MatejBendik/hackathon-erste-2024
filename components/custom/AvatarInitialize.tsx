@@ -38,7 +38,7 @@ const AvatarInitialize = ({ onNext, updateFormData, formData }: AvatarInitialize
     };
 
     const handleNextMouth = () => {
-        const newMouthIndex = (formData.currentMouthIndex + 1) % mouthImages.length; 
+        const newMouthIndex = (formData.currentMouthIndex + 1) % mouthImages.length;
         updateFormData("currentMouthIndex", newMouthIndex.toString());
     };
 
