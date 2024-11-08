@@ -18,9 +18,6 @@ const CreateAvatar = () => {
     currentMouthIndex: 0,
   });
 
-
-  console.log(formData);
-
   const updateFormData = (name: string, value: string) => {
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
