@@ -58,7 +58,7 @@ const AvatarInitialize = ({ onNext, updateFormData, formData }: AvatarInitialize
 
                 {/* Header */}
                 <span className="whitespace-nowrap text-[48px] mb-16 font-bold bg-gradient-to-r tracking-normal from-purple-500 to-blue-500 inline-block text-transparent bg-clip-text">
-                    Vytvor si svojho Avatara
+                    Create your own avatar
                 </span>
 
                 {/* Main Content */}
@@ -105,7 +105,7 @@ const AvatarInitialize = ({ onNext, updateFormData, formData }: AvatarInitialize
                             <Input
                                 type="text"
                                 name="name"
-                                placeholder="Meno"
+                                placeholder="Name"
                                 value={formData.name}
                                 onChange={(e) => updateFormData(e.target.name, e.target.value)}
                                 className="border-[3px] border-[#2870ED] dark:bg-gray-700"
@@ -113,12 +113,12 @@ const AvatarInitialize = ({ onNext, updateFormData, formData }: AvatarInitialize
 
                             <Select value={formData.gender} onValueChange={(value) => updateFormData("gender", value)}>
                                 <SelectTrigger className="w-[180px] border-[3px] border-[#2870ED] dark:bg-gray-700">
-                                    <SelectValue placeholder="Pohlavie" />
+                                    <SelectValue placeholder="Gender" />
                                 </SelectTrigger>
                                 <SelectContent className=" dark:bg-gray-700">
-                                    <SelectItem value="muz">Muž</SelectItem>
-                                    <SelectItem value="zena">Žena</SelectItem>
-                                    <SelectItem value="ine">Iné</SelectItem>
+                                    <SelectItem value="male">Male</SelectItem>
+                                    <SelectItem value="female">Female</SelectItem>
+                                    <SelectItem value="ine">Other</SelectItem>
                                 </SelectContent>
                             </Select>
                         </div>
@@ -146,7 +146,7 @@ const AvatarInitialize = ({ onNext, updateFormData, formData }: AvatarInitialize
 
                         <Textarea
                             name="hobbies"
-                            placeholder="Záľuby"
+                            placeholder="Hobbies..."
                             value={formData.hobbies}
                             onChange={(e) => updateFormData(e.target.name, e.target.value)}
                             className="border-[3px] border-[#2870ED] dark:bg-gray-700"
