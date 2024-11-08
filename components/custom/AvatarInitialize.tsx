@@ -16,15 +16,17 @@ import { Button } from "@/components/ui/button";
 interface AvatarInitializeProps {
     onNext: () => void;
     updateFormData: (name: string, value: string) => void;
-    formData: { name: string; gender: string; birthDate: string; hobbies: string, currentHairIndex: number, currentBodyIndex: number };
+    formData: { name: string; gender: string; birthDate: string; hobbies: string, currentHairIndex: number, currentBodyIndex: number, currentMouthIndex: number };
 }
 
 const AvatarInitialize = ({ onNext, updateFormData, formData }: AvatarInitializeProps) => {
     const hairImages = ["/Hair1.png", "/Hair2.png", "/Hair3.png", "/Hair4.png"];
     const bodyImages = ["/Body1.png", "/Body2.png", "/Body3.png", "/Body4.png"];
+    const mouthImages = ["/Mouth1.png", "/Mouth2.png", "/Mouth3.png", "/Mouth4.png"];
 
     const [currentHairIndex, setCurrentHairIndex] = useState(formData.currentHairIndex || 0);
     const [currentBodyIndex, setCurrentBodyIndex] = useState(formData.currentBodyIndex || 0);
+    const [currentMouthIndex, setCurrentMouthIndex] = useState(formData.currentMouthIndex || 0);
 
     const handleNextHair = () => {
         const newHairIndex = (currentHairIndex + 1) % hairImages.length;
@@ -50,6 +52,18 @@ const AvatarInitialize = ({ onNext, updateFormData, formData }: AvatarInitialize
         updateFormData("currentBodyIndex", newBodyIndex.toString());
     };
 
+    const handleNextMouth = () => {
+        const newMouthIndex = (currentMouthIndex + 1) % mouthImages.length;
+        setCurrentMouthIndex(newMouthIndex);
+        updateFormData("currentMouthIndex", newMouthIndex.toString());
+    };
+
+    const handlePrevMouth = () => {
+        const newMouthIndex = currentMouthIndex === 0 ? mouthImages.length - 1 : currentMouthIndex - 1;
+        setCurrentMouthIndex(newMouthIndex);
+        updateFormData("currentMouthIndex", newMouthIndex.toString());
+    };
+
     return (
         <div className="flex items-center justify-center h-screen bg-gray-100 dark:bg-gray-700">
             <div className="flex flex-col items-center w-auto h-[530px] rounded-[25px] bg-[#F3F3F3] dark:bg-gray-800 p-8 shadow-[0px_8px_18px_11px_rgba(0,_0,_0,_0.1)]">
@@ -68,7 +82,8 @@ const AvatarInitialize = ({ onNext, updateFormData, formData }: AvatarInitialize
                         <img src={bodyImages[currentBodyIndex]} alt="avatar" className="mt-10 absolute scale-75 translate-y-[90px] rounded-lg" />
                         {/* Hair Image */}
                         <img src={hairImages[currentHairIndex]} alt="hair" className="bottom-20 mb-5 absolute translate-x-[-1px] rounded-lg scale-75" />
-
+                        {/* Mouth Image */}
+                        <img src={mouthImages[currentMouthIndex]} alt="avatar" className=" mt-10 absolute scale-75 translate-y-[80px] rounded-lg" />
                         {/* Arrow Controls */}
                         <div className="flex w-full justify-between items-center mt-6 mb-6">
                             <Button onClick={handleNextHair} className="w-[50px] h-[50px] text-[#2F74EE] dark:text-white dark:bg-gray-800 dark:hover:text-[#2F74EE]" variant="outline" size="icon">
@@ -79,10 +94,10 @@ const AvatarInitialize = ({ onNext, updateFormData, formData }: AvatarInitialize
                             </Button>
                         </div>
                         <div className="flex w-full justify-between items-center mb-6">
-                            <Button className="w-[50px] h-[50px] text-[#2F74EE] dark:text-white dark:bg-gray-800 dark:hover:text-[#2F74EE]" variant="outline" size="icon">
+                            <Button onClick={handlePrevMouth} className="w-[50px] h-[50px] text-[#2F74EE] dark:text-white dark:bg-gray-800 dark:hover:text-[#2F74EE]" variant="outline" size="icon">
                                 <ChevronLeft />
                             </Button>
-                            <Button className="w-[50px] h-[50px] text-[#2F74EE] dark:text-white dark:bg-gray-800 dark:hover:text-[#2F74EE]" variant="outline" size="icon">
+                            <Button onClick={handleNextMouth} className="w-[50px] h-[50px] text-[#2F74EE] dark:text-white dark:bg-gray-800 dark:hover:text-[#2F74EE]" variant="outline" size="icon">
                                 <ChevronRight />
                             </Button>
                         </div>
