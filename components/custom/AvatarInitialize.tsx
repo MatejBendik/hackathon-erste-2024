@@ -112,8 +112,8 @@ const AvatarInitialize = ({ onNext, updateFormData, formData }: AvatarInitialize
                                 <SelectTrigger className="w-[180px] border-[3px] border-[#2870ED] dark:bg-gray-700">
                                     <SelectValue placeholder="Pohlavie" />
                                 </SelectTrigger>
-                                <SelectContent>
-                                    <SelectItem  value="muz">Muž</SelectItem>
+                                <SelectContent className=" dark:bg-gray-700">
+                                    <SelectItem value="muz">Muž</SelectItem>
                                     <SelectItem value="zena">Žena</SelectItem>
                                     <SelectItem value="ine">Iné</SelectItem>
                                 </SelectContent>
