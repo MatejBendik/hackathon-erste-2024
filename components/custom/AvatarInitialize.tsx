@@ -20,37 +20,38 @@ const AvatarInitialize = ({ onNext, updateFormData, formData }: AvatarInitialize
     const hairImages = ["/Hair1.png", "/Hair2.png", "/Hair3.png", "/Hair4.png"];
     const bodyImages = ["/Body1.png", "/Body2.png", "/Body3.png", "/Body4.png"];
     const mouthImages = ["/Mouth1.png", "/Mouth2.png", "/Mouth3.png", "/Mouth4.png"];
-    const [date, setDate] = useState<Date>()
+
 
     const handleNextHair = () => {
-        const newHairIndex = (formData.currentHairIndex + 1) % hairImages.length;
+        const newHairIndex = (Number(formData.currentHairIndex) + 1) % hairImages.length;
         updateFormData("currentHairIndex", newHairIndex.toString());
     };
 
     const handlePrevHair = () => {
-        const newHairIndex = (formData.currentHairIndex - 1 + hairImages.length) % hairImages.length;
+        const newHairIndex = (Number(formData.currentHairIndex) - 1 + hairImages.length) % hairImages.length;
         updateFormData("currentHairIndex", newHairIndex.toString());
     };
 
     const handleNextBody = () => {
-        const newBodyIndex = (formData.currentBodyIndex + 1) % bodyImages.length;
+        const newBodyIndex = (Number(formData.currentBodyIndex) + 1) % bodyImages.length;
         updateFormData("currentBodyIndex", newBodyIndex.toString());
     };
 
     const handlePrevBody = () => {
-        const newBodyIndex = (formData.currentBodyIndex - 1 + bodyImages.length) % bodyImages.length;
+        const newBodyIndex = (Number(formData.currentBodyIndex) - 1 + bodyImages.length) % bodyImages.length;
         updateFormData("currentBodyIndex", newBodyIndex.toString());
     };
 
     const handleNextMouth = () => {
-        const newMouthIndex = (formData.currentMouthIndex + 1) % mouthImages.length;
+        const newMouthIndex = (Number(formData.currentMouthIndex) + 1) % mouthImages.length;
         updateFormData("currentMouthIndex", newMouthIndex.toString());
     };
 
     const handlePrevMouth = () => {
-        const newMouthIndex = (formData.currentMouthIndex - 1 + mouthImages.length) % mouthImages.length;
+        const newMouthIndex = (Number(formData.currentMouthIndex) - 1 + mouthImages.length) % mouthImages.length;
         updateFormData("currentMouthIndex", newMouthIndex.toString());
     };
+
 
     return (
         <div className="flex items-center justify-center h-screen bg-gray-100 dark:bg-gray-700">
