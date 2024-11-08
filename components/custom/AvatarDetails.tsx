@@ -12,9 +12,7 @@ interface AvatarDetailsProps {
 const AvatarDetails = ({ onBack, onNext }: AvatarDetailsProps) => {
   return (
     <div className="flex items-center justify-center h-screen bg-gray-100">
-      <Button onClick={onBack} className="ml-10 absolute left-3/4 w-[50px] h-[50px] text-[#2F74EE]" variant="outline" size="icon">
-        <ChevronLeft />
-      </Button>
+
       <div className="flex flex-col items-center w-auto  h-[530px] rounded-[25px] bg-[#F3F3F3] p-8 shadow-[0px_8px_18px_11px_rgba(0,_0,_0,_0.1)]">
 
         {/* Header */}
@@ -68,6 +66,9 @@ const AvatarDetails = ({ onBack, onNext }: AvatarDetailsProps) => {
         </div>
 
       </div>
+      <Button onClick={onBack} className="ml-8s absolute left-[19%] w-[50px] h-[50px] text-[#2F74EE]" variant="outline" size="icon">
+        <ChevronLeft />
+      </Button>
       <Button onClick={onNext} className="ml-10 absolute left-3/4 w-[50px] h-[50px] text-[#2F74EE]" variant="outline" size="icon">
         <ChevronRight />
       </Button>
