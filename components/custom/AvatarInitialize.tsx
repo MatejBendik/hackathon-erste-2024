@@ -1,3 +1,4 @@
+
 import React, {useState} from 'react';
 import {
     Select,
@@ -6,6 +7,7 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/select"
+
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { ChevronRight, ChevronLeft } from "lucide-react";
@@ -13,33 +15,29 @@ import { Button } from "@/components/ui/button";
 
 interface AvatarInitializeProps {
     onNext: () => void;
+    updateFormData: (name: string, value: string) => void;
+    formData: { name: string; gender: string; birthDate: string; hobbies: string };
 }
 
-const AvatarInitialize = ({ onNext }: AvatarInitializeProps) => {
-    // Define hair images and state to track the current image
+const AvatarInitialize = ({ onNext, updateFormData, formData }: AvatarInitializeProps) => {
     const hairImages = ["/Hair1.png", "/Hair2.png", "/Hair3.png", "/Hair4.png"];
     const bodyImages = ["/Body1.png", "/Body2.png", "/Body3.png", "/Body4.png"];
     const [currentHairIndex, setCurrentHairIndex] = useState(0);
     const [currentBodyIndex, setCurrentBodyIndex] = useState(0);
 
-    // Function to go to the next hair image
     const handleNextHair = () => {
         setCurrentHairIndex((prevIndex) => (prevIndex + 1) % hairImages.length);
     };
 
-    const handleNextBody = () => {
-        setCurrentBodyIndex((prevIndex2) => (prevIndex2 + 1) % bodyImages.length);
-    };
-
-
-
-    // Function to go to the previous hair image
     const handlePrevHair = () => {
         setCurrentHairIndex((prevIndex) =>
             prevIndex === 0 ? hairImages.length - 1 : prevIndex - 1
         );
     };
 
+    const handleNextBody = () => {
+        setCurrentBodyIndex((prevIndex2) => (prevIndex2 + 1) % bodyImages.length);
+    };
 
     const handlePrevBody = () => {
         setCurrentBodyIndex((prevIndex2) =>
@@ -98,28 +96,39 @@ const AvatarInitialize = ({ onNext }: AvatarInitializeProps) => {
                         <div className="flex space-x-4">
                             <Input
                                 type="text"
+                                name="name"
                                 placeholder="Meno"
+                                value={formData.name}
+                                onChange={(e) => updateFormData(e.target.name, e.target.value)}
                                 className="border-[3px] border-[#2870ED] dark:bg-gray-700"
                             />
+
                             <Select>
                                 <SelectTrigger className="w-[180px] border-[3px] border-[#2870ED] dark:bg-gray-700">
                                     <SelectValue placeholder="Pohlavie" />
                                 </SelectTrigger>
                                 <SelectContent>
-                                    <SelectItem value="muz">Muž</SelectItem>
+                                    <SelectItem  value="muz">Muž</SelectItem>
                                     <SelectItem value="zena">Žena</SelectItem>
                                     <SelectItem value="ine">Iné</SelectItem>
                                 </SelectContent>
                             </Select>
+
                         </div>
                         <Input
                             type="date"
+                            name="birthDate"
                             placeholder="Dátum narodenia"
+                            value={formData.birthDate}
+                            onChange={(e) => updateFormData(e.target.name, e.target.value)}
                             className="border-[3px] border-[#2870ED] dark:bg-gray-700"
                         />
                         <Textarea
+                            name="hobbies"
                             placeholder="Záľuby"
-                            className="border-[3px] border-[#2870ED] rounded-lg p-2 h-[120px]  resize-none dark:bg-gray-700 "
+                            value={formData.hobbies}
+                            onChange={(e) => updateFormData(e.target.name, e.target.value)}
+                            className="border-[3px] border-[#2870ED] dark:bg-gray-700"
                         />
                     </div>
                 </div>
