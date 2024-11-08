@@ -75,7 +75,7 @@ const AvatarInitialize = ({ onNext }: AvatarInitializeProps) => {
                         />
                         <Textarea
                             placeholder="Záľuby"
-                            className="border-[3px] border-[#2870ED] rounded-lg p-2 h-[120px] resize-none dark:bg-gray-700"
+                            className="border-[3px] border-[#2870ED] rounded-lg p-2 h-[120px]  resize-none dark:bg-gray-700 "
                         />
                     </div>
 
@@ -89,7 +89,7 @@ const AvatarInitialize = ({ onNext }: AvatarInitializeProps) => {
 
             </div>
 
-            <Button onClick={onNext} className="ml-10 absolute left-3/4 w-[50px] h-[50px] text-[#2F74EE]" variant="outline" size="icon">
+            <Button onClick={onNext} className="ml-10 absolute left-3/4 w-[50px] h-[50px] text-[#2F74EE] dark:text-white dark:bg-gray-800 dark:hover:text-[#2F74EE]" variant="outline" size="icon">
                 <ChevronRight />
             </Button>
         </div>
