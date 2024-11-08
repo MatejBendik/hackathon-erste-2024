@@ -75,26 +75,26 @@ const AvatarInitialize = ({ onNext, updateFormData, formData }: AvatarInitialize
                         <img src={mouthImages[formData.currentMouthIndex]} alt="avatar" className="mt-10 absolute scale-75 translate-y-[80px] rounded-lg" />
                         {/* Arrow Controls */}
                         <div className="flex w-full justify-between items-center mt-6 mb-6">
-                            <Button onClick={handleNextHair} className="w-[50px] h-[50px] text-[#2F74EE] dark:text-white dark:bg-gray-800 dark:hover:text-[#2F74EE]" variant="outline" size="icon">
+                            <Button onClick={handleNextHair} className="w-[50px] h-[50px] text-[#2F74EE] dark:text-white dark:bg-gray-800 dark:hover:text-[#2F74EE] dark:hover:scale-[110%] hover:scale-[110%] " variant="outline" size="icon">
                                 <ChevronLeft />
                             </Button>
-                            <Button onClick={handlePrevHair} className="w-[50px] h-[50px] text-[#2F74EE] dark:text-white dark:bg-gray-800 dark:hover:text-[#2F74EE]" variant="outline" size="icon">
+                            <Button onClick={handlePrevHair} className="w-[50px] h-[50px] text-[#2F74EE] dark:text-white dark:bg-gray-800 dark:hover:text-[#2F74EE] dark:hover:scale-[110%] hover:scale-[110%] " variant="outline" size="icon">
                                 <ChevronRight />
                             </Button>
                         </div>
                         <div className="flex w-full justify-between items-center mb-6">
-                            <Button onClick={handlePrevMouth} className="w-[50px] h-[50px] text-[#2F74EE] dark:text-white dark:bg-gray-800 dark:hover:text-[#2F74EE]" variant="outline" size="icon">
+                            <Button onClick={handlePrevMouth} className="w-[50px] h-[50px] text-[#2F74EE] dark:text-white dark:bg-gray-800 dark:hover:text-[#2F74EE] dark:hover:scale-[110%] hover:scale-[110%] " variant="outline" size="icon">
                                 <ChevronLeft />
                             </Button>
-                            <Button onClick={handleNextMouth} className="w-[50px] h-[50px] text-[#2F74EE] dark:text-white dark:bg-gray-800 dark:hover:text-[#2F74EE]" variant="outline" size="icon">
+                            <Button onClick={handleNextMouth} className="w-[50px] h-[50px] text-[#2F74EE] dark:text-white dark:bg-gray-800 dark:hover:text-[#2F74EE] dark:hover:scale-[110%] hover:scale-[110%] " variant="outline" size="icon">
                                 <ChevronRight />
                             </Button>
                         </div>
                         <div className="flex w-full justify-between items-center">
-                            <Button onClick={handleNextBody} className="w-[50px] h-[50px] text-[#2F74EE] dark:text-white dark:bg-gray-800 dark:hover:text-[#2F74EE]" variant="outline" size="icon">
+                            <Button onClick={handleNextBody} className="w-[50px] h-[50px] text-[#2F74EE] dark:text-white dark:bg-gray-800 dark:hover:text-[#2F74EE] dark:hover:scale-[110%] hover:scale-[110%] " variant="outline" size="icon">
                                 <ChevronLeft />
                             </Button>
-                            <Button onClick={handlePrevBody} className="w-[50px] h-[50px] text-[#2F74EE] dark:text-white dark:bg-gray-800 dark:hover:text-[#2F74EE]" variant="outline" size="icon">
+                            <Button onClick={handlePrevBody} className="w-[50px] h-[50px] text-[#2F74EE] dark:text-white dark:bg-gray-800 dark:hover:text-[#2F74EE] dark:hover:scale-[110%] hover:scale-[110%] " variant="outline" size="icon">
                                 <ChevronRight />
                             </Button>
                         </div>
@@ -162,7 +162,7 @@ const AvatarInitialize = ({ onNext, updateFormData, formData }: AvatarInitialize
                 </div>
             </div>
 
-            <Button onClick={onNext} className="ml-10 absolute left-3/4 w-[50px] h-[50px] text-[#2F74EE] dark:text-white dark:bg-gray-800 dark:hover:text-[#2F74EE]" variant="outline" size="icon">
+            <Button onClick={onNext} className="ml-10 absolute left-3/4 w-[50px] h-[50px] text-[#2F74EE] dark:text-white dark:bg-gray-800 dark:hover:text-[#2F74EE] dark:hover:scale-[110%] hover:scale-[110%]" variant="outline" size="icon">
                 <ChevronRight />
             </Button>
         </div>
