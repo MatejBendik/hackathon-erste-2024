@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { ChevronRight, ChevronLeft } from "lucide-react";
@@ -9,6 +9,22 @@ interface AvatarInitializeProps {
 }
 
 const AvatarInitialize = ({ onNext }: AvatarInitializeProps) => {
+    // Define hair images and state to track the current image
+    const hairImages = ["/Hair1.png", "/Hair2.png", "/Hair3.png", "/Hair4.png"];
+    const [currentHairIndex, setCurrentHairIndex] = useState(0);
+
+    // Function to go to the next hair image
+    const handleNextHair = () => {
+        setCurrentHairIndex((prevIndex) => (prevIndex + 1) % hairImages.length);
+    };
+
+    // Function to go to the previous hair image
+    const handlePrevHair = () => {
+        setCurrentHairIndex((prevIndex) =>
+            prevIndex === 0 ? hairImages.length - 1 : prevIndex - 1
+        );
+    };
+
     return (
         <div className="flex items-center justify-center h-screen bg-gray-100 dark:bg-gray-700">
             <div className="flex flex-col items-center w-auto h-[530px] rounded-[25px] bg-[#F3F3F3] dark:bg-gray-800 p-8 shadow-[0px_8px_18px_11px_rgba(0,_0,_0,_0.1)]">
@@ -25,13 +41,15 @@ const AvatarInitialize = ({ onNext }: AvatarInitializeProps) => {
                     <div className="flex flex-col items-center p-4 mr-28 bg-white dark:bg-gray-700 border-[3px] border-[#2870ED] rounded-[25px] w-[328px] h-[320px] relative">
                         {/* Avatar Image */}
                         <img src="/Avatar.png" alt="avatar" className="mt-10 absolute w-[135px] h-[250px] rounded-lg" />
-                        <img src="/Hair1.png" alt="avatar" className="bottom-20 mb-5 absolute  translate-x-[-1px] rounded-lg scale-75" />
+                        {/* Hair Image */}
+                        <img src={hairImages[currentHairIndex]} alt="hair" className="bottom-20 mb-5 absolute translate-x-[-1px] rounded-lg scale-75" />
+
                         {/* Arrow Controls */}
                         <div className="flex w-full justify-between items-center mt-6 mb-6">
-                            <Button className="w-[50px] h-[50px] text-[#2F74EE] dark:text-white dark:bg-gray-800 dark:hover:text-[#2F74EE]" variant="outline" size="icon">
+                            <Button onClick={handleNextHair} className="w-[50px] h-[50px] text-[#2F74EE] dark:text-white dark:bg-gray-800 dark:hover:text-[#2F74EE]" variant="outline" size="icon">
                                 <ChevronLeft />
                             </Button>
-                            <Button className="w-[50px] h-[50px] text-[#2F74EE] dark:text-white dark:bg-gray-800 dark:hover:text-[#2F74EE]" variant="outline" size="icon">
+                            <Button onClick={handlePrevHair} className="w-[50px] h-[50px] text-[#2F74EE] dark:text-white dark:bg-gray-800 dark:hover:text-[#2F74EE]" variant="outline" size="icon">
                                 <ChevronRight />
                             </Button>
                         </div>
