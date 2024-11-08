@@ -1,5 +1,8 @@
 import React from 'react'
 import { Input } from "@/components/ui/input"
+import { Textarea } from "@/components/ui/textarea"
+import { ChevronRight } from "lucide-react"
+import { Button } from "@/components/ui/button"
 const AvatarInitialize = () => {
     return (
         <div className="flex items-center justify-center h-screen bg-gray-100">
@@ -14,7 +17,7 @@ const AvatarInitialize = () => {
                 <div className="flex w-full justify-between">
 
                     {/* Avatar Customization */}
-                    <div className="flex flex-col items-center p-4 mr-28 bg-white border-2 border-[#2870ED] rounded-lg w-[328px] h-[320px]">
+                    <div className="flex flex-col items-center p-4 mr-28 bg-white border-[3px] border-[#2870ED] rounded-lg w-[328px] h-[320px]">
                         {/* Avatar Image */}
 
 
@@ -28,21 +31,24 @@ const AvatarInitialize = () => {
                             <Input
                                 type="text"
                                 placeholder="Meno"
+                                className="border-[3px] border-[#2870ED]"
                             />
                             <Input
                                 type="text"
                                 placeholder="Pohlavie"
+                                className="border-[3px] border-[#2870ED]"
                             />
                         </div>
                         <Input
                             type="date"
                             placeholder="Dátum narodenia"
-                            className="border-2  rounded-lg p-2"
+                            className="border-[3px] border-[#2870ED]"
+
                         />
-                        <textarea
+                        <Textarea
                             placeholder="Záľuby"
-                            className="border-2 rounded-lg p-2 h-[120px] resize-none"
-                        ></textarea>
+                            className="border-[3px] border-[#2870ED] rounded-lg p-2 h-[120px] resize-none"
+                        />
                     </div>
 
                 </div>
@@ -53,6 +59,9 @@ const AvatarInitialize = () => {
                 </div>
 
             </div>
+            <Button className="ml-10 absolute left-3/4 w-[50px] h-[50px] text-[#2F74EE]" variant="outline" size="icon">
+                <ChevronRight />
+            </Button>
         </div>
     );
 }
