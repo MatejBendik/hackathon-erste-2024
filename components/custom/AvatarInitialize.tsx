@@ -3,7 +3,14 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { ChevronRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
-const AvatarInitialize = () => {
+
+
+interface AvatarInitializeProps {
+    onNext: () => void;
+}
+
+const AvatarInitialize = ({ onNext }: AvatarInitializeProps) => {
+
     return (
         <div className="flex items-center justify-center h-screen bg-gray-100">
             <div className="flex flex-col items-center w-auto  h-[530px] rounded-[25px] bg-[#F3F3F3] p-8 shadow-[0px_8px_18px_11px_rgba(0,_0,_0,_0.1)]">
@@ -60,7 +67,7 @@ const AvatarInitialize = () => {
 
             </div>
             <Button className="ml-10 absolute left-3/4 w-[50px] h-[50px] text-[#2F74EE]" variant="outline" size="icon">
-                <ChevronRight />
+                <ChevronRight onClick={onNext}/>
             </Button>
         </div>
     );

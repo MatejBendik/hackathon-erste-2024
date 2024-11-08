@@ -1,6 +1,10 @@
 import React from 'react'
 
-const AvatarUsage = () => {
+interface AvatarUsageProps {
+  onBack: () => void;
+}
+
+const AvatarUsage = ({ onBack }: AvatarUsageProps) => {
   return (
     <div>AvatarUsage</div>
   )
