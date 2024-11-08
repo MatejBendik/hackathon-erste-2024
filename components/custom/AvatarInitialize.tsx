@@ -1,4 +1,11 @@
 import React, {useState} from 'react';
+import {
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
+} from "@/components/ui/select"
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { ChevronRight, ChevronLeft } from "lucide-react";
@@ -94,11 +101,16 @@ const AvatarInitialize = ({ onNext }: AvatarInitializeProps) => {
                                 placeholder="Meno"
                                 className="border-[3px] border-[#2870ED] dark:bg-gray-700"
                             />
-                            <Input
-                                type="text"
-                                placeholder="Pohlavie"
-                                className="border-[3px] border-[#2870ED] dark:bg-gray-700"
-                            />
+                            <Select>
+                                <SelectTrigger className="w-[180px] border-[3px] border-[#2870ED] dark:bg-gray-700">
+                                    <SelectValue placeholder="Pohlavie" />
+                                </SelectTrigger>
+                                <SelectContent>
+                                    <SelectItem value="muz">Muž</SelectItem>
+                                    <SelectItem value="zena">Žena</SelectItem>
+                                    <SelectItem value="ine">Iné</SelectItem>
+                                </SelectContent>
+                            </Select>
                         </div>
                         <Input
                             type="date"
