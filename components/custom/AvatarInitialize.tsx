@@ -4,7 +4,11 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue, } from "
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
-import { ChevronRight, ChevronLeft } from "lucide-react";
+import {ChevronRight, ChevronLeft, CalendarIcon} from "lucide-react";
+import {Popover, PopoverContent, PopoverTrigger,} from "@/components/ui/popover"
+import { Calendar } from "@/components/ui/calendar"
+import { cn } from "@/lib/utils"
+import { format } from "date-fns";
 
 interface AvatarInitializeProps {
     onNext: () => void;
@@ -16,6 +20,7 @@ const AvatarInitialize = ({ onNext, updateFormData, formData }: AvatarInitialize
     const hairImages = ["/Hair1.png", "/Hair2.png", "/Hair3.png", "/Hair4.png"];
     const bodyImages = ["/Body1.png", "/Body2.png", "/Body3.png", "/Body4.png"];
     const mouthImages = ["/Mouth1.png", "/Mouth2.png", "/Mouth3.png", "/Mouth4.png"];
+    const [date, setDate] = React.useState<Date>()
 
     const handleNextHair = () => {
         const newHairIndex = (formData.currentHairIndex + 1) % hairImages.length;
@@ -118,14 +123,30 @@ const AvatarInitialize = ({ onNext, updateFormData, formData }: AvatarInitialize
                             </Select>
 
                         </div>
-                        <Input
-                            type="date"
-                            name="birthDate"
-                            placeholder="Dátum narodenia"
-                            value={formData.birthDate}
-                            onChange={(e) => updateFormData(e.target.name, e.target.value)}
-                            className="border-[3px] border-[#2870ED] dark:bg-gray-700"
-                        />
+                        <Popover>
+                            <PopoverTrigger asChild>
+                                <Button
+                                    variant={"outline"}
+                                    className={cn(
+                                        " justify-start text-left font-normal",
+                                        !date && "text-muted-foreground border-[3px] border-[#2870ED] dark:bg-gray-700"
+                                    )}
+                                >
+                                    <CalendarIcon className="mr-2 h-4 w-4" />
+                                    {date ? format(date, "PPP") : <span>Pick a date</span>}
+                                </Button>
+                            </PopoverTrigger>
+                            <PopoverContent className="w-auto p-0">
+                                <Calendar
+                                    mode="single"
+                                    selected={date}
+                                    onSelect={setDate}
+                                    initialFocus
+                                    className="dark:bg-gray-800"
+                                />
+                            </PopoverContent>
+                        </Popover>
+
                         <Textarea
                             name="hobbies"
                             placeholder="Záľuby"
