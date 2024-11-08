@@ -60,22 +60,22 @@ const AvatarInitialize = ({ onNext }: AvatarInitializeProps) => {
                             <Input
                                 type="text"
                                 placeholder="Meno"
-                                className="border-[3px] border-[#2870ED]"
+                                className="border-[3px] border-[#2870ED] dark:bg-gray-700"
                             />
                             <Input
                                 type="text"
                                 placeholder="Pohlavie"
-                                className="border-[3px] border-[#2870ED]"
+                                className="border-[3px] border-[#2870ED] dark:bg-gray-700"
                             />
                         </div>
                         <Input
                             type="date"
                             placeholder="Dátum narodenia"
-                            className="border-[3px] border-[#2870ED]"
+                            className="border-[3px] border-[#2870ED] dark:bg-gray-700"
                         />
                         <Textarea
                             placeholder="Záľuby"
-                            className="border-[3px] border-[#2870ED] rounded-lg p-2 h-[120px] resize-none"
+                            className="border-[3px] border-[#2870ED] rounded-lg p-2 h-[120px] resize-none dark:bg-gray-700"
                         />
                     </div>
 
