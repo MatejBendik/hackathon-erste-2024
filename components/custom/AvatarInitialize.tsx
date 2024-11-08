@@ -23,32 +23,32 @@ const AvatarInitialize = ({ onNext }: AvatarInitializeProps) => {
                 <div className="flex w-full justify-between">
 
                     {/* Avatar Customization */}
-                    <div className="flex flex-col items-center p-4 mr-28 bg-white border-[3px] border-[#2870ED] rounded-[25px] w-[328px] h-[320px] relative">
+                    <div className="flex flex-col items-center p-4 mr-28 bg-white dark:bg-gray-700 border-[3px] border-[#2870ED] rounded-[25px] w-[328px] h-[320px] relative">
                         {/* Avatar Image */}
                         <img src="/Avatar.png" alt="avatar" className="mt-3 absolute w-[135px] h-[250px] rounded-lg" />
 
                         {/* Arrow Controls */}
                         <div className="flex w-full justify-between items-center mt-6 mb-6">
-                            <Button className="w-[50px] h-[50px] text-[#2F74EE]" variant="outline" size="icon">
+                            <Button className="w-[50px] h-[50px] text-[#2F74EE] dark:text-white" variant="outline" size="icon">
                                 <ChevronLeft />
                             </Button>
-                            <Button className="w-[50px] h-[50px] text-[#2F74EE]" variant="outline" size="icon">
+                            <Button className="w-[50px] h-[50px] text-[#2F74EE] dark:text-white" variant="outline" size="icon">
                                 <ChevronRight />
                             </Button>
                         </div>
                         <div className="flex w-full justify-between items-center mb-6">
-                            <Button className="w-[50px] h-[50px] text-[#2F74EE]" variant="outline" size="icon">
+                            <Button className="w-[50px] h-[50px] text-[#2F74EE] dark:text-white" variant="outline" size="icon">
                                 <ChevronLeft />
                             </Button>
-                            <Button className="w-[50px] h-[50px] text-[#2F74EE]" variant="outline" size="icon">
+                            <Button className="w-[50px] h-[50px] text-[#2F74EE] dark:text-white" variant="outline" size="icon">
                                 <ChevronRight />
                             </Button>
                         </div>
                         <div className="flex w-full justify-between items-center">
-                            <Button className="w-[50px] h-[50px] text-[#2F74EE]" variant="outline" size="icon">
+                            <Button className="w-[50px] h-[50px] text-[#2F74EE] dark:text-white" variant="outline" size="icon">
                                 <ChevronLeft />
                             </Button>
-                            <Button className="w-[50px] h-[50px] text-[#2F74EE]" variant="outline" size="icon">
+                            <Button className="w-[50px] h-[50px] text-[#2F74EE] dark:text-white" variant="outline" size="icon">
                                 <ChevronRight />
                             </Button>
                         </div>
