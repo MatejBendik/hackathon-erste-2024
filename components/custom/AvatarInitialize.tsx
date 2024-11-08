@@ -14,7 +14,6 @@ const AvatarInitialize = ({ onNext }: AvatarInitializeProps) => {
             <div className="flex flex-col items-center w-auto h-[530px] rounded-[25px] bg-[#F3F3F3] dark:bg-gray-800 p-8 shadow-[0px_8px_18px_11px_rgba(0,_0,_0,_0.1)]">
 
                 {/* Header */}
-
                 <span className="whitespace-nowrap text-[48px] mb-16 font-bold bg-gradient-to-r tracking-normal from-purple-500 to-blue-500 inline-block text-transparent bg-clip-text">
                     Vytvor si svojho Avatara
                 </span>
@@ -78,7 +77,6 @@ const AvatarInitialize = ({ onNext }: AvatarInitializeProps) => {
                             className="border-[3px] border-[#2870ED] rounded-lg p-2 h-[120px]  resize-none dark:bg-gray-700 "
                         />
                     </div>
-
                 </div>
 
                 {/* Dice Icon */}
@@ -86,7 +84,6 @@ const AvatarInitialize = ({ onNext }: AvatarInitializeProps) => {
                     {/* Optional: Uncomment and add dice icon here */}
                     {/* <img src="/path-to-dice-icon.png" alt="dice" className="w-8 h-8" /> */}
                 </div>
-
             </div>
 
             <Button onClick={onNext} className="ml-10 absolute left-3/4 w-[50px] h-[50px] text-[#2F74EE] dark:text-white dark:bg-gray-800 dark:hover:text-[#2F74EE]" variant="outline" size="icon">

@@ -15,7 +15,6 @@ const AvatarDetails = ({ onBack, onNext }: AvatarDetailsProps) => {
       <div className="flex flex-col items-center w-auto rounded-[25px] w-[800px] mt-28 bg-[#F3F3F3] dark:bg-gray-800 p-8 shadow-[0px_8px_18px_11px_rgba(0,_0,_0,_0.1)]">
 
         {/* Header */}
-
         <span className="whitespace-nowrap text-[48px] font-bold bg-gradient-to-r tracking-normal from-purple-500 to-blue-500 inline-block text-transparent bg-clip-text">
           Poďme do detailov...
         </span>
@@ -49,7 +48,6 @@ const AvatarDetails = ({ onBack, onNext }: AvatarDetailsProps) => {
               className="border-[3px] border-[#2870ED] rounded-lg p-2 resize-none"
             />
           </div>
-
         </div>
 
         {/* Dice Icon */}
