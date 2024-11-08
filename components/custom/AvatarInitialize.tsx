@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue, } from "@/components/ui/select"
 import { Input } from "@/components/ui/input";
@@ -17,9 +16,9 @@ interface AvatarInitializeProps {
 }
 
 const AvatarInitialize = ({ onNext, updateFormData, formData }: AvatarInitializeProps) => {
-	const hairImages = ["/Hair1.png", "/Hair2.png", "/Hair3.png", "/Hair4.png"];
+	const hairImages = ["/Hair1.png", "/Hair2.png", "/Hair3.png", "/Hair4.png", "/Hair5.png"];
 	const bodyImages = ["/Body1.png", "/Body2.png", "/Body3.png", "/Body4.png"];
-	const mouthImages = ["/Mouth1.png", "/Mouth2.png", "/Mouth3.png", "/Mouth4.png"];
+	const mouthImages = ["/Mouth1.png", "/Mouth2.png", "/Mouth3.png", "/Mouth4.png", "/Mouth5.png"];
 
 
 	const handleNextHair = () => {
@@ -52,22 +51,20 @@ const AvatarInitialize = ({ onNext, updateFormData, formData }: AvatarInitialize
 		updateFormData("currentMouthIndex", newMouthIndex.toString());
 	};
 
-<<<<<<< HEAD
+	const handleRandomizeAvatar = () => {
+		const randomHairIndex = Math.floor(Math.random() * hairImages.length);
+		const randomBodyIndex = Math.floor(Math.random() * bodyImages.length);
+		const randomMouthIndex = Math.floor(Math.random() * mouthImages.length);
+
+		updateFormData("currentHairIndex", randomHairIndex.toString());
+		updateFormData("currentBodyIndex", randomBodyIndex.toString());
+		updateFormData("currentMouthIndex", randomMouthIndex.toString());
+	};
+
+
 	return (
 		<div className="flex items-center justify-center h-screen bg-gray-100 dark:bg-gray-700">
 			<div className="flex flex-col items-center w-auto h-[530px] rounded-[25px] bg-[#F3F3F3] dark:bg-gray-800 p-8 shadow-[0px_8px_18px_11px_rgba(0,_0,_0,_0.1)]">
-=======
-    const handleRandomizeAvatar = () => {
-        const randomHairIndex = Math.floor(Math.random() * hairImages.length);
-        const randomBodyIndex = Math.floor(Math.random() * bodyImages.length);
-        const randomMouthIndex = Math.floor(Math.random() * mouthImages.length);
-
-        updateFormData("currentHairIndex", randomHairIndex.toString());
-        updateFormData("currentBodyIndex", randomBodyIndex.toString());
-        updateFormData("currentMouthIndex", randomMouthIndex.toString());
-    };
-
->>>>>>> e15e4af0af989f9b6748ea450c1ea2f2a22d6fec
 
 				{/* Header */}
 				<span className="whitespace-nowrap text-[48px] mb-16 font-bold bg-gradient-to-r tracking-normal from-purple-500 to-blue-500 inline-block text-transparent bg-clip-text">
@@ -87,32 +84,39 @@ const AvatarInitialize = ({ onNext, updateFormData, formData }: AvatarInitialize
 						<img src={mouthImages[formData.currentMouthIndex]} alt="avatar" className="mt-10 absolute scale-75 translate-y-[80px] rounded-lg" />
 						{/* Arrow Controls */}
 						<div className="flex w-full justify-between items-center mt-6 mb-6">
-							<Button onClick={handleNextHair} className="w-[50px] h-[50px] text-[#2F74EE] dark:text-white dark:bg-gray-800 dark:hover:text-[#2F74EE]" variant="outline" size="icon">
+							<Button onClick={handleNextHair} className="w-[50px] h-[50px] text-[#2F74EE] dark:text-white dark:bg-gray-800 dark:hover:text-[#2F74EE] dark:hover:scale-[110%] hover:scale-[110%] " variant="outline" size="icon">
 								<ChevronLeft />
 							</Button>
-							<Button onClick={handlePrevHair} className="w-[50px] h-[50px] text-[#2F74EE] dark:text-white dark:bg-gray-800 dark:hover:text-[#2F74EE]" variant="outline" size="icon">
+							<Button onClick={handlePrevHair} className="w-[50px] h-[50px] text-[#2F74EE] dark:text-white dark:bg-gray-800 dark:hover:text-[#2F74EE] dark:hover:scale-[110%] hover:scale-[110%] " variant="outline" size="icon">
 								<ChevronRight />
 							</Button>
 						</div>
 						<div className="flex w-full justify-between items-center mb-6">
-							<Button onClick={handlePrevMouth} className="w-[50px] h-[50px] text-[#2F74EE] dark:text-white dark:bg-gray-800 dark:hover:text-[#2F74EE]" variant="outline" size="icon">
+							<Button onClick={handlePrevMouth} className="w-[50px] h-[50px] text-[#2F74EE] dark:text-white dark:bg-gray-800 dark:hover:text-[#2F74EE] dark:hover:scale-[110%] hover:scale-[110%] " variant="outline" size="icon">
 								<ChevronLeft />
 							</Button>
-							<Button onClick={handleNextMouth} className="w-[50px] h-[50px] text-[#2F74EE] dark:text-white dark:bg-gray-800 dark:hover:text-[#2F74EE]" variant="outline" size="icon">
+							<Button onClick={handleNextMouth} className="w-[50px] h-[50px] text-[#2F74EE] dark:text-white dark:bg-gray-800 dark:hover:text-[#2F74EE] dark:hover:scale-[110%] hover:scale-[110%] " variant="outline" size="icon">
 								<ChevronRight />
 							</Button>
 						</div>
+
 						<div className="flex w-full justify-between items-center">
-							<Button onClick={handleNextBody} className="w-[50px] h-[50px] text-[#2F74EE] dark:text-white dark:bg-gray-800 dark:hover:text-[#2F74EE]" variant="outline" size="icon">
+							<Button onClick={handleNextBody} className="w-[50px] h-[50px] text-[#2F74EE] dark:text-white dark:bg-gray-800 dark:hover:text-[#2F74EE] dark:hover:scale-[110%] hover:scale-[110%] " variant="outline" size="icon">
 								<ChevronLeft />
 							</Button>
-							<Button onClick={handlePrevBody} className="w-[50px] h-[50px] text-[#2F74EE] dark:text-white dark:bg-gray-800 dark:hover:text-[#2F74EE]" variant="outline" size="icon">
+
+							<Button onClick={handlePrevBody} className="w-[50px] h-[50px] text-[#2F74EE] dark:text-white dark:bg-gray-800 dark:hover:text-[#2F74EE] dark:hover:scale-[110%] hover:scale-[110%] " variant="outline" size="icon">
 								<ChevronRight />
+							</Button>
+						</div>
+
+						<div className="flex justify-end w-full mt-4">
+							<Button onClick={handleRandomizeAvatar} className="w-[50px] h-[50px] text-[#2F74EE] dark:text-white dark:bg-gray-800 dark:hover:text-[#2F74EE] dark:hover:scale-[110%] hover:scale-[110%]" variant="outline" size="icon">
+								<img src="/Dice.png" alt="dice" className="w-6 h-6" />
 							</Button>
 						</div>
 					</div>
 
-<<<<<<< HEAD
 					{/* Form Fields */}
 					<div className="flex flex-col w-[300px] space-y-4">
 						<div className="flex space-x-4">
@@ -124,50 +128,6 @@ const AvatarInitialize = ({ onNext, updateFormData, formData }: AvatarInitialize
 								onChange={(e) => updateFormData(e.target.name, e.target.value)}
 								className="border-[3px] border-[#2870ED] dark:bg-gray-700"
 							/>
-=======
-                    {/* Avatar Customization */}
-                    <div className="flex flex-col items-center p-4 mr-28 bg-white dark:bg-gray-700 border-[3px] border-[#2870ED] rounded-[25px] w-[328px] h-[320px] relative">
-                        {/* Avatar Image */}
-                        <img src={bodyImages[formData.currentBodyIndex]} alt="avatar" className="mt-10 absolute scale-75 translate-y-[90px] rounded-lg" />
-                        {/* Hair Image */}
-                        <img src={hairImages[formData.currentHairIndex]} alt="hair" className="bottom-20 mb-5 absolute translate-x-[-1px] rounded-lg scale-75" />
-                        {/* Avatar Image */}
-                        <img src={mouthImages[formData.currentMouthIndex]} alt="avatar" className="mt-10 absolute scale-75 translate-y-[80px] rounded-lg" />
-                        {/* Arrow Controls */}
-                        <div className="flex w-full justify-between items-center mt-6 mb-6">
-                            <Button onClick={handleNextHair} className="w-[50px] h-[50px] text-[#2F74EE] dark:text-white dark:bg-gray-800 dark:hover:text-[#2F74EE] dark:hover:scale-[110%] hover:scale-[110%] " variant="outline" size="icon">
-                                <ChevronLeft />
-                            </Button>
-                            <Button onClick={handlePrevHair} className="w-[50px] h-[50px] text-[#2F74EE] dark:text-white dark:bg-gray-800 dark:hover:text-[#2F74EE] dark:hover:scale-[110%] hover:scale-[110%] " variant="outline" size="icon">
-                                <ChevronRight />
-                            </Button>
-                        </div>
-                        <div className="flex w-full justify-between items-center mb-6">
-                            <Button onClick={handlePrevMouth} className="w-[50px] h-[50px] text-[#2F74EE] dark:text-white dark:bg-gray-800 dark:hover:text-[#2F74EE] dark:hover:scale-[110%] hover:scale-[110%] " variant="outline" size="icon">
-                                <ChevronLeft />
-                            </Button>
-                            <Button onClick={handleNextMouth} className="w-[50px] h-[50px] text-[#2F74EE] dark:text-white dark:bg-gray-800 dark:hover:text-[#2F74EE] dark:hover:scale-[110%] hover:scale-[110%] " variant="outline" size="icon">
-                                <ChevronRight />
-                            </Button>
-                        </div>
-
-                        <div className="flex w-full justify-between items-center">
-                            <Button onClick={handleNextBody} className="w-[50px] h-[50px] text-[#2F74EE] dark:text-white dark:bg-gray-800 dark:hover:text-[#2F74EE] dark:hover:scale-[110%] hover:scale-[110%] " variant="outline" size="icon">
-                                <ChevronLeft />
-                            </Button>
-
-                            <Button onClick={handlePrevBody} className="w-[50px] h-[50px] text-[#2F74EE] dark:text-white dark:bg-gray-800 dark:hover:text-[#2F74EE] dark:hover:scale-[110%] hover:scale-[110%] " variant="outline" size="icon">
-                                <ChevronRight />
-                            </Button>
-                        </div>
-
-                        <div className="flex justify-end w-full mt-4">
-                            <Button onClick={handleRandomizeAvatar} className="w-[50px] h-[50px] text-[#2F74EE] dark:text-white dark:bg-gray-800 dark:hover:text-[#2F74EE] dark:hover:scale-[110%] hover:scale-[110%]" variant="outline" size="icon">
-                                <img src="/Dice.png" alt="dice" className="w-6 h-6" />
-                            </Button>
-                        </div>
-                    </div>
->>>>>>> 8753277b930c9c4daafa60b24d73fb0440564889
 
 							<Select value={formData.gender} onValueChange={(value) => updateFormData("gender", value)}>
 								<SelectTrigger className="w-[180px] border-[3px] border-[#2870ED] dark:bg-gray-700">
@@ -219,26 +179,11 @@ const AvatarInitialize = ({ onNext, updateFormData, formData }: AvatarInitialize
 				</div>
 			</div>
 
-<<<<<<< HEAD
-			<Button onClick={onNext} className="ml-10 absolute left-3/4 w-[50px] h-[50px] text-[#2F74EE] dark:text-white dark:bg-gray-800 dark:hover:text-[#2F74EE]" variant="outline" size="icon">
+			<Button onClick={onNext} className="ml-10 absolute left-3/4 w-[50px] h-[50px] text-[#2F74EE] dark:text-white dark:bg-gray-800 dark:hover:text-[#2F74EE] dark:hover:scale-[110%] hover:scale-[110%]" variant="outline" size="icon">
 				<ChevronRight />
 			</Button>
 		</div>
 	);
-=======
-                {/* Dice Icon */}
-                <div className="mt-4">
-                    {/* Optional: Uncomment and add dice icon here */}
-                    {/* <img src="/path-to-dice-icon.png" alt="dice" className="w-8 h-8" /> */}
-                </div>
-            </div>
-
-            <Button onClick={onNext} className="ml-10 absolute left-3/4 w-[50px] h-[50px] text-[#2F74EE] dark:text-white dark:bg-gray-800 dark:hover:text-[#2F74EE] dark:hover:scale-[110%] hover:scale-[110%]" variant="outline" size="icon">
-                <ChevronRight />
-            </Button>
-        </div>
-    );
->>>>>>> 8753277b930c9c4daafa60b24d73fb0440564889
 };
 
 export default AvatarInitialize;
