@@ -14,7 +14,8 @@ const AvatarUsage = ({ onBack }: AvatarUsageProps) => {
       <div className="flex flex-col items-center w-auto  h-[530px] rounded-[25px] bg-[#F3F3F3] dark:bg-gray-800 p-8 shadow-[0px_8px_18px_11px_rgba(0,_0,_0,_0.1)]">
         {/* Header */}
         <span className="whitespace-nowrap text-[48px] mb-16 font-bold bg-gradient-to-r tracking-normal from-purple-500 to-blue-500 inline-block text-transparent bg-clip-text">
-          Na čo chcete použiť svojho AI asistenta?
+          What do you want to use your AI assistant for?
+
         </span>
 
         {/* Main Content */}
