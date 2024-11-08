@@ -1,9 +1,8 @@
-import React from 'react'
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { ChevronRight } from "lucide-react"
-import { Button } from "@/components/ui/button"
-
+import React from 'react';
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { ChevronRight, ChevronLeft } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 interface AvatarInitializeProps {
     onNext: () => void;
@@ -12,7 +11,7 @@ interface AvatarInitializeProps {
 const AvatarInitialize = ({ onNext }: AvatarInitializeProps) => {
     return (
         <div className="flex items-center justify-center h-screen bg-gray-100">
-            <div className="flex flex-col items-center w-auto  h-[530px] rounded-[25px] bg-[#F3F3F3] p-8 shadow-[0px_8px_18px_11px_rgba(0,_0,_0,_0.1)]">
+            <div className="flex flex-col items-center w-auto h-[530px] rounded-[25px] bg-[#F3F3F3] p-8 shadow-[0px_8px_18px_11px_rgba(0,_0,_0,_0.1)]">
 
                 {/* Header */}
                 <h1 className="text-[48px] font-bold text-[#2870ED] mb-16">
@@ -23,21 +22,35 @@ const AvatarInitialize = ({ onNext }: AvatarInitializeProps) => {
                 <div className="flex w-full justify-between">
 
                     {/* Avatar Customization */}
-                    <div className="flex flex-col items-center p-4 mr-28 bg-white border-[3px] border-[#2870ED] rounded-lg w-[328px] h-[320px]">
+                    <div className="flex flex-col items-center p-4 mr-28 bg-white border-[3px] border-[#2870ED] rounded-lg w-[328px] h-[320px] relative">
                         {/* Avatar Image */}
-
+                        <img src="/Avatar.png" alt="avatar" className="mt-3 absolute w-[135px] h-[250px] rounded-lg" />
 
                         {/* Arrow Controls */}
-                        <Button  className="left-1/3 mb-12 relative w-[50px] h-[50px] text-[#2F74EE]" variant="outline" size="icon">
-                            <ChevronRight />
-                        </Button>
-                        <Button  className="left-1/3 mb-12  relative w-[50px] h-[50px] text-[#2F74EE]" variant="outline" size="icon">
-                            <ChevronRight />
-                        </Button>
-                        <Button  className="left-1/3 relative w-[50px] h-[50px] text-[#2F74EE]" variant="outline" size="icon">
-                            <ChevronRight />
-                        </Button>
-
+                        <div className="flex w-full justify-between items-center mt-6 mb-6">
+                            <Button className="w-[50px] h-[50px] text-[#2F74EE]" variant="outline" size="icon">
+                                <ChevronLeft />
+                            </Button>
+                            <Button className="w-[50px] h-[50px] text-[#2F74EE]" variant="outline" size="icon">
+                                <ChevronRight />
+                            </Button>
+                        </div>
+                        <div className="flex w-full justify-between items-center mb-6">
+                            <Button className="w-[50px] h-[50px] text-[#2F74EE]" variant="outline" size="icon">
+                                <ChevronLeft />
+                            </Button>
+                            <Button className="w-[50px] h-[50px] text-[#2F74EE]" variant="outline" size="icon">
+                                <ChevronRight />
+                            </Button>
+                        </div>
+                        <div className="flex w-full justify-between items-center">
+                            <Button className="w-[50px] h-[50px] text-[#2F74EE]" variant="outline" size="icon">
+                                <ChevronLeft />
+                            </Button>
+                            <Button className="w-[50px] h-[50px] text-[#2F74EE]" variant="outline" size="icon">
+                                <ChevronRight />
+                            </Button>
+                        </div>
                     </div>
 
                     {/* Form Fields */}
@@ -58,7 +71,6 @@ const AvatarInitialize = ({ onNext }: AvatarInitializeProps) => {
                             type="date"
                             placeholder="Dátum narodenia"
                             className="border-[3px] border-[#2870ED]"
-
                         />
                         <Textarea
                             placeholder="Záľuby"
@@ -70,15 +82,17 @@ const AvatarInitialize = ({ onNext }: AvatarInitializeProps) => {
 
                 {/* Dice Icon */}
                 <div className="mt-4">
-                    {/*<img src="/path-to-dice-icon.png" alt="dice" className="w-8 h-8" />*/}
+                    {/* Optional: Uncomment and add dice icon here */}
+                    {/* <img src="/path-to-dice-icon.png" alt="dice" className="w-8 h-8" /> */}
                 </div>
 
             </div>
+
             <Button onClick={onNext} className="ml-10 absolute left-3/4 w-[50px] h-[50px] text-[#2F74EE]" variant="outline" size="icon">
                 <ChevronRight />
             </Button>
         </div>
     );
-}
+};
 
-export default AvatarInitialize
+export default AvatarInitialize;
