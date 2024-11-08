@@ -1,4 +1,5 @@
-import { ClerkProvider, SignInButton, SignedIn, SignedOut, UserButton, } from "@clerk/nextjs";
+import { ClerkProvider } from "@clerk/nextjs";
+import { ThemeProvider } from "@/components/ui/theme-provider"
 
 import type { Metadata } from "next";
 
@@ -29,11 +30,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
+
     <ClerkProvider>
       <html lang="en">
         <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-          <Navbar />
-          {children}
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <Navbar />
+            {children}
+          </ThemeProvider>
         </body>
       </html>
     </ClerkProvider>
