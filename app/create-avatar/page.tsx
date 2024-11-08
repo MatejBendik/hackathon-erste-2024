@@ -31,7 +31,7 @@ const CreateAvatar = () => {
   const renderStepContent = () => {
     if (step === 1) return <AvatarInitialize onNext={handleNext} updateFormData={updateFormData} formData={formData} />;
     if (step === 2) return <AvatarDetails onBack={handleBack} onNext={handleNext} />;
-    if (step === 3) return <AvatarUsage />;
+    if (step === 3) return <AvatarUsage onBack={handleBack} />;
   };
 
   return (
