@@ -1,4 +1,13 @@
-import React, { useState } from 'react';
+
+import React, {useState} from 'react';
+import {
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
+} from "@/components/ui/select"
+
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { ChevronRight, ChevronLeft } from "lucide-react";
@@ -98,14 +107,18 @@ const AvatarInitialize = ({ onNext, updateFormData, formData }: AvatarInitialize
                                 onChange={(e) => updateFormData(e.target.name, e.target.value)}
                                 className="border-[3px] border-[#2870ED] dark:bg-gray-700"
                             />
-                            <Input
-                                type="text"
-                                name="gender"
-                                placeholder="Pohlavie"
-                                value={formData.gender}
-                                onChange={(e) => updateFormData(e.target.name, e.target.value)}
-                                className="border-[3px] border-[#2870ED] dark:bg-gray-700"
-                            />
+
+                            <Select>
+                                <SelectTrigger className="w-[180px] border-[3px] border-[#2870ED] dark:bg-gray-700">
+                                    <SelectValue placeholder="Pohlavie" />
+                                </SelectTrigger>
+                                <SelectContent>
+                                    <SelectItem  value="muz">Muž</SelectItem>
+                                    <SelectItem value="zena">Žena</SelectItem>
+                                    <SelectItem value="ine">Iné</SelectItem>
+                                </SelectContent>
+                            </Select>
+
                         </div>
                         <Input
                             type="date"
