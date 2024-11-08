@@ -25,8 +25,8 @@ const AvatarInitialize = ({ onNext }: AvatarInitializeProps) => {
                     {/* Avatar Customization */}
                     <div className="flex flex-col items-center p-4 mr-28 bg-white dark:bg-gray-700 border-[3px] border-[#2870ED] rounded-[25px] w-[328px] h-[320px] relative">
                         {/* Avatar Image */}
-                        <img src="/Avatar.png" alt="avatar" className="mt-3 absolute w-[135px] h-[250px] rounded-lg" />
-
+                        <img src="/Avatar.png" alt="avatar" className="mt-10 absolute w-[135px] h-[250px] rounded-lg" />
+                        <img src="/Hair2.png" alt="avatar" className="  absolute translate-y-[-20px] translate-x-[-1px] rounded-lg scale-75" />
                         {/* Arrow Controls */}
                         <div className="flex w-full justify-between items-center mt-6 mb-6">
                             <Button className="w-[50px] h-[50px] text-[#2F74EE] dark:text-white dark:bg-gray-800 dark:hover:text-[#2F74EE]" variant="outline" size="icon">
