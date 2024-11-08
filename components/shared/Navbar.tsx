@@ -27,12 +27,12 @@ const Navbar = () => {
         <span>My AI Version</span>
       </a>
 
-      <div className="hidden md:flex space-x-6">
+      {/* <div className="hidden md:flex space-x-6">
         <a href="/" className="text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400">Home</a>
         <a href="/about" className="text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400">About</a>
         <a href="/features" className="text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400">Features</a>
         <a href="/contact" className="text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400">Contact</a>
-      </div>
+      </div> */}
 
       <div className="flex items-center space-x-4">
         {/* Dark mode toggle */}
