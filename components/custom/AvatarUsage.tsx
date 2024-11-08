@@ -41,7 +41,7 @@ const AvatarUsage = ({ onBack }: AvatarUsageProps) => {
         </div>
 
       </div>
-      <Button onClick={onBack} className="ml-8s absolute left-[12%]  w-[50px] h-[50px] text-[#2F74EE]" variant="outline" size="icon">
+      <Button onClick={onBack} className="ml-8s absolute left-[12%]  w-[50px] h-[50px] text-[#2F74EE] dark:hover:scale-[110%] hover:scale-[110%]" variant="outline" size="icon">
         <ChevronLeft />
       </Button>
     </div>
