@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 
 import localFont from "next/font/local";
 import "./globals.css";
+import Navbar from "@/components/shared/Navbar";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -30,14 +31,8 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en">
-        <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-        >
-          <div className="flex justify-end m-4">
-            <SignedIn>
-              <UserButton />
-            </SignedIn>
-          </div>
+        <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+          <Navbar />
           {children}
         </body>
       </html>
