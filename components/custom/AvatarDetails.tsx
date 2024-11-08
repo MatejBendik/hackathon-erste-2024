@@ -11,9 +11,9 @@ interface AvatarDetailsProps {
 
 const AvatarDetails = ({ onBack, onNext }: AvatarDetailsProps) => {
   return (
-    <div className="flex items-center justify-center h-screen bg-gray-100">
+    <div className="flex items-center justify-center bg-gray-100">
 
-      <div className="flex flex-col items-center w-auto rounded-[25px] bg-[#F3F3F3] p-8 shadow-[0px_8px_18px_11px_rgba(0,_0,_0,_0.1)]">
+      <div className="flex flex-col items-center w-auto rounded-[25px] mt-28 bg-[#F3F3F3] p-8 shadow-[0px_8px_18px_11px_rgba(0,_0,_0,_0.1)]">
 
         {/* Header */}
         <h1 className="text-[48px] font-bold text-[#2870ED] ">

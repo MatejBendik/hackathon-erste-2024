@@ -14,7 +14,7 @@ const Navbar = () => {
   const { setTheme } = useTheme()
 
   return (
-    <nav className="flex justify-between items-center px-8 py-4 bg-gray-100 dark:bg-gray-900 shadow-md">
+    <nav className="flex justify-between items-center px-8 py-4 bg-gray-100 dark:bg-gray-900 shadow-md w-full absolute z-50">
       {/* Logo and clickable title */}
       <a href="/" className="flex items-center space-x-2 text-2xl font-bold text-gray-800 dark:text-white hover:text-blue-600 duration-200 dark:hover:text-blue-400">
         <Image
