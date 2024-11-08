@@ -28,6 +28,15 @@ const AvatarInitialize = ({ onNext }: AvatarInitializeProps) => {
 
 
                         {/* Arrow Controls */}
+                        <Button  className="left-1/3 mb-12 relative w-[50px] h-[50px] text-[#2F74EE]" variant="outline" size="icon">
+                            <ChevronRight />
+                        </Button>
+                        <Button  className="left-1/3 mb-12  relative w-[50px] h-[50px] text-[#2F74EE]" variant="outline" size="icon">
+                            <ChevronRight />
+                        </Button>
+                        <Button  className="left-1/3 relative w-[50px] h-[50px] text-[#2F74EE]" variant="outline" size="icon">
+                            <ChevronRight />
+                        </Button>
 
                     </div>
 
