@@ -16,7 +16,7 @@ const AvatarDetails = ({ onBack, onNext }: AvatarDetailsProps) => {
 
         {/* Header */}
         <span className="whitespace-nowrap text-[48px] font-bold bg-gradient-to-r tracking-normal from-purple-500 to-blue-500 inline-block text-transparent bg-clip-text">
-          Poďme do detailov...
+          Let's get to know you better
         </span>
 
         {/* Main Content */}
@@ -24,27 +24,27 @@ const AvatarDetails = ({ onBack, onNext }: AvatarDetailsProps) => {
           {/* Form Fields */}
           <div className="flex flex-col w-full gap-5">
             <Textarea
-              placeholder="Vzdelanie a profesia"
+              placeholder="Education and work experience"
               className="border-[3px] border-[#2870ED] rounded-lg p-2 resize-none dark:bg-gray-700"
             />
             <Textarea
-              placeholder="Dlhodobé ciele"
+              placeholder="Long-term goals and dreams"
               className="border-[3px] border-[#2870ED] rounded-lg p-2 resize-none dark:bg-gray-700"
             />
             <Textarea
-              placeholder="Zdravotné preferencie a návyky"
+              placeholder="Health preferences and habits"
               className="border-[3px] border-[#2870ED] rounded-lg p-2 resize-none dark:bg-gray-700"
             />
             <Textarea
-              placeholder="Finančná situácia"
+              placeholder="Financial situation and goals"
               className="border-[3px] border-[#2870ED] rounded-lg p-2 resize-none dark:bg-gray-700"
             />
             <Textarea
-              placeholder="Vzťahy a rodinný status"
+              placeholder="Relationships and family"
               className="border-[3px] border-[#2870ED] rounded-lg p-2 resize-none dark:bg-gray-700"
             />
             <Textarea
-              placeholder="Preferovaný životný štýl a hodnoty"
+              placeholder="Preffered hobbies and activities"
               className="border-[3px] border-[#2870ED] rounded-lg p-2 resize-none dark:bg-gray-700"
             />
           </div>
