@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { BackgroundBeamsWithCollision } from "@/components/ui/background-beams-with-collision";
 
@@ -16,7 +17,9 @@ export default function Home() {
           </h2>
         </div>
         <div>
-          <Button> Create your Avatar </Button>
+          <Button asChild size="lg">
+            <Link href="/create-avatar">Create Your Avatar</Link>
+          </Button>
         </div>
       </div>
     </BackgroundBeamsWithCollision>
