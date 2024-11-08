@@ -1,7 +1,15 @@
-import React from "react";
+'use client'
+
+import AvatarDetails from "@/components/custom/AvatarDetails";
+import AvatarInitialize from "@/components/custom/AvatarInitialize";
+import AvatarUsage from "@/components/custom/AvatarUsage";
 
 const CreateAvatar = () => {
-  return <div>CreateAvatar</div>;
+  return <div>
+    <AvatarInitialize />
+    <AvatarDetails />
+    <AvatarUsage />
+  </div>;
 };
 
 export default CreateAvatar;
