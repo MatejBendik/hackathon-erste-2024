@@ -4,8 +4,8 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue, } from "
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
-import {ChevronRight, ChevronLeft, CalendarIcon} from "lucide-react";
-import {Popover, PopoverContent, PopoverTrigger,} from "@/components/ui/popover"
+import { ChevronRight, ChevronLeft, CalendarIcon } from "lucide-react";
+import { Popover, PopoverContent, PopoverTrigger, } from "@/components/ui/popover"
 import { Calendar } from "@/components/ui/calendar"
 import { cn } from "@/lib/utils"
 import { format } from "date-fns";
@@ -20,7 +20,7 @@ const AvatarInitialize = ({ onNext, updateFormData, formData }: AvatarInitialize
     const hairImages = ["/Hair1.png", "/Hair2.png", "/Hair3.png", "/Hair4.png"];
     const bodyImages = ["/Body1.png", "/Body2.png", "/Body3.png", "/Body4.png"];
     const mouthImages = ["/Mouth1.png", "/Mouth2.png", "/Mouth3.png", "/Mouth4.png"];
-    const [date, setDate] = React.useState<Date>()
+    const [date, setDate] = useState<Date>()
 
     const handleNextHair = () => {
         const newHairIndex = (formData.currentHairIndex + 1) % hairImages.length;
@@ -43,7 +43,7 @@ const AvatarInitialize = ({ onNext, updateFormData, formData }: AvatarInitialize
     };
 
     const handleNextMouth = () => {
-        const newMouthIndex = (formData.currentMouthIndex + 1) % mouthImages.length; 
+        const newMouthIndex = (formData.currentMouthIndex + 1) % mouthImages.length;
         updateFormData("currentMouthIndex", newMouthIndex.toString());
     };
 
@@ -121,26 +121,23 @@ const AvatarInitialize = ({ onNext, updateFormData, formData }: AvatarInitialize
                                     <SelectItem value="ine">Iné</SelectItem>
                                 </SelectContent>
                             </Select>
-
                         </div>
+
                         <Popover>
                             <PopoverTrigger asChild>
                                 <Button
                                     variant={"outline"}
-                                    className={cn(
-                                        " justify-start text-left font-normal",
-                                        !date && "text-muted-foreground border-[3px] border-[#2870ED] dark:bg-gray-700"
-                                    )}
+                                    className={cn(" justify-start text-left font-normal text-muted-foreground border-[3px] border-[#2870ED] dark:bg-gray-700")}
                                 >
                                     <CalendarIcon className="mr-2 h-4 w-4" />
-                                    {date ? format(date, "PPP") : <span>Pick a date</span>}
+                                    {formData.birthDate ? format(formData.birthDate, "PPP") : <span>Pick a date</span>}
                                 </Button>
                             </PopoverTrigger>
                             <PopoverContent className="w-auto p-0">
                                 <Calendar
                                     mode="single"
-                                    selected={date}
-                                    onSelect={setDate}
+                                    selected={formData.birthDate ? new Date(formData.birthDate) : undefined}
+                                    onSelect={(date) => { if (date) updateFormData("birthDate", date.toISOString()) }}
                                     initialFocus
                                     className="dark:bg-gray-800"
                                 />
