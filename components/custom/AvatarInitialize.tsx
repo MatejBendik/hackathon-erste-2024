@@ -14,15 +14,16 @@ const AvatarInitialize = ({ onNext }: AvatarInitializeProps) => {
             <div className="flex flex-col items-center w-auto h-[530px] rounded-[25px] bg-[#F3F3F3] p-8 shadow-[0px_8px_18px_11px_rgba(0,_0,_0,_0.1)]">
 
                 {/* Header */}
-                <h1 className="text-[48px] font-bold text-[#2870ED] mb-16">
+
+                <span className="whitespace-nowrap text-[48px] mb-16 font-bold bg-gradient-to-r tracking-normal from-purple-500 to-blue-500 inline-block text-transparent bg-clip-text">
                     Vytvor si svojho Avatara
-                </h1>
+                </span>
 
                 {/* Main Content */}
                 <div className="flex w-full justify-between">
 
                     {/* Avatar Customization */}
-                    <div className="flex flex-col items-center p-4 mr-28 bg-white border-[3px] border-[#2870ED] rounded-lg w-[328px] h-[320px] relative">
+                    <div className="flex flex-col items-center p-4 mr-28 bg-white border-[3px] border-[#2870ED] rounded-[25px] w-[328px] h-[320px] relative">
                         {/* Avatar Image */}
                         <img src="/Avatar.png" alt="avatar" className="mt-3 absolute w-[135px] h-[250px] rounded-lg" />
 
