@@ -52,6 +52,16 @@ const AvatarInitialize = ({ onNext, updateFormData, formData }: AvatarInitialize
         updateFormData("currentMouthIndex", newMouthIndex.toString());
     };
 
+    const handleRandomizeAvatar = () => {
+        const randomHairIndex = Math.floor(Math.random() * hairImages.length);
+        const randomBodyIndex = Math.floor(Math.random() * bodyImages.length);
+        const randomMouthIndex = Math.floor(Math.random() * mouthImages.length);
+
+        updateFormData("currentHairIndex", randomHairIndex.toString());
+        updateFormData("currentBodyIndex", randomBodyIndex.toString());
+        updateFormData("currentMouthIndex", randomMouthIndex.toString());
+    };
+
 
     return (
         <div className="flex items-center justify-center h-screen bg-gray-100 dark:bg-gray-700">
@@ -90,12 +100,20 @@ const AvatarInitialize = ({ onNext, updateFormData, formData }: AvatarInitialize
                                 <ChevronRight />
                             </Button>
                         </div>
+
                         <div className="flex w-full justify-between items-center">
                             <Button onClick={handleNextBody} className="w-[50px] h-[50px] text-[#2F74EE] dark:text-white dark:bg-gray-800 dark:hover:text-[#2F74EE] dark:hover:scale-[110%] hover:scale-[110%] " variant="outline" size="icon">
                                 <ChevronLeft />
                             </Button>
+
                             <Button onClick={handlePrevBody} className="w-[50px] h-[50px] text-[#2F74EE] dark:text-white dark:bg-gray-800 dark:hover:text-[#2F74EE] dark:hover:scale-[110%] hover:scale-[110%] " variant="outline" size="icon">
                                 <ChevronRight />
+                            </Button>
+                        </div>
+
+                        <div className="flex justify-end w-full mt-4">
+                            <Button onClick={handleRandomizeAvatar} className="w-[50px] h-[50px] text-[#2F74EE] dark:text-white dark:bg-gray-800 dark:hover:text-[#2F74EE] dark:hover:scale-[110%] hover:scale-[110%]" variant="outline" size="icon">
+                                <img src="/Dice.png" alt="dice" className="w-6 h-6" />
                             </Button>
                         </div>
                     </div>
