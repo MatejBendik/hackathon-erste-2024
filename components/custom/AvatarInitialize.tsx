@@ -14,9 +14,10 @@ const AvatarInitialize = ({ onNext }: AvatarInitializeProps) => {
             <div className="flex flex-col items-center w-auto h-[530px] rounded-[25px] bg-[#F3F3F3] p-8 shadow-[0px_8px_18px_11px_rgba(0,_0,_0,_0.1)]">
 
                 {/* Header */}
-                <h1 className="text-[48px] font-bold text-[#2870ED] mb-16">
+
+                <span className="whitespace-nowrap text-[48px] mb-16 font-bold bg-gradient-to-r tracking-normal from-purple-500 to-blue-500 inline-block text-transparent bg-clip-text">
                     Vytvor si svojho Avatara
-                </h1>
+                </span>
 
                 {/* Main Content */}
                 <div className="flex w-full justify-between">
