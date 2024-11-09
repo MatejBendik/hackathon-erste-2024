@@ -4,8 +4,7 @@ import { Button } from '../ui/button';
 import { ChevronLeft } from 'lucide-react';
 import { MutatingDots } from 'react-loader-spinner';
 import { BackgroundBeamsWithCollision } from "@/components/ui/background-beams-with-collision";
-
-import { redirect } from 'next/navigation'
+import { redirect } from 'next/navigation';
 
 interface AvatarUsageProps {
   onBack: () => void;
@@ -64,9 +63,9 @@ const AvatarUsage = ({ onBack, formData }: AvatarUsageProps) => {
   };
 
   if (showChat && apiResponse) {
-    localStorage.setItem('initialAnswer', apiResponse)
-    localStorage.setItem('formData', JSON.stringify(formData))
-    redirect('/chat')
+    localStorage.setItem('initialAnswer', apiResponse);
+    localStorage.setItem('formData', JSON.stringify(formData));
+    redirect('/chat');
   }
 
   return (
@@ -78,11 +77,11 @@ const AvatarUsage = ({ onBack, formData }: AvatarUsageProps) => {
           </span>
 
           {/* Avatar Image */}
-          <img src={bodyImages[formData.currentBodyIndex]} alt="avatar" className="  absolute scale-75  rounded-lg" />
+          <img src={bodyImages[formData.currentBodyIndex]} alt="avatar" className="mt-48  absolute scale-75  rounded-lg" />
           {/* Hair Image */}
-          <img src={hairImages[formData.currentHairIndex]} alt="hair" className=" absolute  rounded-lg scale-75" />
+          <img src={hairImages[formData.currentHairIndex]} alt="hair" className="mt-8 absolute  rounded-lg scale-75" />
           {/* Avatar Image */}
-          <img src={mouthImages[formData.currentMouthIndex]} alt="avatar" className="  absolute scale-75 rounded-lg" />
+          <img src={mouthImages[formData.currentMouthIndex]} alt="avatar" className="mt-48 translate-y-[-10px]  absolute scale-75 rounded-lg" />
 
           {isLoading ? (
             <MutatingDots
@@ -95,7 +94,7 @@ const AvatarUsage = ({ onBack, formData }: AvatarUsageProps) => {
               ariaLabel="mutating-dots-loading"
             />
           ) : (
-            <Button className="mt-8" onClick={handleSubmit} size="lg">
+            <Button className="mt-72" onClick={handleSubmit} size="lg">
               Move to chat !
             </Button>
           )}
