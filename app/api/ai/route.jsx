@@ -21,6 +21,24 @@ export async function POST(request) {
       lifestyle,
     } = await request.json();
 
+    // Validate if the input fields exist, otherwise set defaults
+    const userData = {
+      name: name || "Unknown",
+      gender: gender || "Unknown",
+      interests: Array.isArray(interests) ? interests : ["Fitness", "Health"],
+      date_of_birth: date_of_birth || "Unknown",
+      job: job || "Unknown",
+      goals: Array.isArray(goals)
+        ? goals
+        : ["Improve physical fitness", "Maintain a healthy lifestyle"],
+      habits: Array.isArray(habits)
+        ? habits
+        : ["Regular exercise", "Healthy eating habits"],
+      financial_situation: financial_situation || "Unknown",
+      relationships: Array.isArray(relationships) ? relationships : [],
+      lifestyle: lifestyle || "Unknown",
+    };
+
     // Create a detailed request to OpenAI
     const response = await openai.chat.completions.create({
       model: "gpt-3.5-turbo",
@@ -30,7 +48,7 @@ export async function POST(request) {
           content: [
             {
               type: "text",
-              text: "What will happen in the future if I start exercising?",
+              text: "What will happen with me in the future.",
             },
           ],
         },
@@ -39,7 +57,7 @@ export async function POST(request) {
           content: [
             {
               type: "text",
-              text: "",
+              text: "Je toto hardcoded response?",
             },
           ],
           tool_calls: [
@@ -48,24 +66,7 @@ export async function POST(request) {
               type: "function",
               function: {
                 name: "my_ai_version",
-                arguments: JSON.stringify({
-                  job: job || "Unknown",
-                  name: name || "Unknown",
-                  goals: goals || [
-                    "Improve physical fitness",
-                    "Maintain a healthy lifestyle",
-                  ],
-                  gender: gender || "Unknown",
-                  habits: habits || [
-                    "Regular exercise",
-                    "Healthy eating habits",
-                  ],
-                  interests: interests || ["Fitness", "Health"],
-                  lifestyle: lifestyle || "Unknown",
-                  date_of_birth: date_of_birth || "Unknown",
-                  relationships: relationships || [],
-                  financial_situation: financial_situation || "Unknown",
-                }),
+                arguments: JSON.stringify(userData),
               },
             },
           ],
@@ -85,7 +86,7 @@ export async function POST(request) {
           content: [
             {
               type: "text",
-              text: "Starting to exercise can have several positive effects on your future. Here are some potential outcomes:\n\n1. **Improved Physical Fitness**: Regular exercise can lead to improved physical fitness, increased strength, endurance, and flexibility.\n\n2. **Better Health**: Exercise can help in maintaining a healthy weight, reducing the risk of chronic diseases like heart disease, diabetes, and certain types of cancer.\n\n3. **Enhanced Mental Well-being**: Physical activity is known to boost mood, reduce stress, anxiety, and depression. It can also improve cognitive function and sleep quality.\n\n4. **Increased Energy Levels**: Engaging in physical activity can increase your energy levels and combat feelings of fatigue.\n\n5. **Enhanced Self-esteem**: Achieving fitness goals and feeling healthier can boost your confidence and self-esteem.\n\n6. **Social Opportunities**: Exercising can provide opportunities to meet new people, join group classes, or participate in sports, enhancing your social connections.\n\nRemember, it's essential to start exercising gradually and choose activities that you enjoy to maintain consistency and make it a sustainable habit.",
+              text: "Your future is bright. You will achieve your goals and live a happy life.",
             },
           ],
         },
