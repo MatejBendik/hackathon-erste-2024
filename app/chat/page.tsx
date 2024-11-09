@@ -135,6 +135,7 @@ const ChatComponent = () => {
                           )}
                         </div>
                       </div>
+
                   )}
 
                   {message.role === "user" && (
