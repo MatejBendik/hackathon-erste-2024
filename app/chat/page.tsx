@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import React, { useState, useEffect } from "react";
 import axios from "axios";
@@ -27,7 +27,6 @@ const ChatComponent = () => {
   const [messages, setMessages] = useState<{ role: string; content: string }[]>([]);
   const [userMessage, setUserMessage] = useState("");
   const [formData, setFormData] = useState<ChatComponentProps["formData"] | null>(null);
-  const [loading, setLoading] = useState(false); // Step 1: State for loading
 
   useEffect(() => {
     const storedFormData = localStorage.getItem("formData");
@@ -57,28 +56,25 @@ const ChatComponent = () => {
       return;
     }
 
-    setLoading(true);
-
     try {
       const response = await axios.post("/api/ai/chat", {
         userMessage,
         formData,
       });
 
-      const aiResponse = response.data.response;
+      console.log({ response });
 
+      const aiResponse = response.data.response;
       setMessages((prev) => [
         ...prev,
         { role: "assistant", content: aiResponse },
       ]);
-      setLoading(false);
     } catch (error) {
       if (axios.isAxiosError(error)) {
         console.error("Error sending message:", error.response?.data || error.message);
       } else {
         console.error("Error sending message:", error);
       }
-      setLoading(false);
     }
   };
 
@@ -87,9 +83,15 @@ const ChatComponent = () => {
       const formattedLine = line.split(/(\*\*[^*]+\*\*)/).map((segment, i) => {
         if (segment.startsWith("**") && segment.endsWith("**")) {
           return (
-            <strong key={i} className="font-semibold text-blue-600 dark:text-blue-500">
+            <strong key={i} className="font-semibold text-blue-600">
               {segment.slice(2, -2)}
             </strong>
+          );
+        } else if (segment.match(/^\d+\.\s/)) {
+          return (
+            <li key={i} className="list-decimal ml-6">
+              {segment.replace(/^\d+\.\s/, "")}
+            </li>
           );
         } else if (segment.startsWith("* ")) {
           return (
@@ -111,35 +113,50 @@ const ChatComponent = () => {
 
   return (
     <BackgroundBeamsWithCollision className="inset-0 z-0">
-      <div className="z-10 flex flex-col h-screen p-6 ">
+      <div className="z-10 flex flex-col h-screen p-6">
         <div className="flex-grow overflow-y-auto mt-20 p-4 mb-4 space-y-4 rounded-lg">
           {messages.map((message, index) => (
-            <div
-              key={index}
-              className={`flex ${message.role === "user" ? "justify-end" : "justify-start"}`}
-            >
-              <div
-                className={`max-w-xl px-4 py-2 rounded-lg ${message.role === "user"
-                  ? "bg-blue-500 text-white"
-                  : "bg-gray-300 text-gray-800 dark:bg-gray-700 dark:text-white"
-                  }`}
-              >
-                {message.role === "assistant" ? (
-                  <div className="space-y-2">
-                    {/* Step 4: Show loader if loading is true */}
-                    {loading ? (
-                      <div className="flex justify-center items-center space-x-2">
-                        <div className="w-4 h-4 border-2 border-t-2 border-blue-500 rounded-full animate-spin" />
-                        <span>AI is thinking...</span>
+            <div key={index} className={`flex ${message.role === "user" ? "justify-end" : "justify-start"}`}>
+              {message.role === "assistant" && (
+                <div className="flex items-center space-x-2">
+                  {/* Assistant icon */}
+                  <div className="w-[40px] h-[40px] bg-gray-300 rounded-full flex items-center justify-center">
+                    <span className="text-white font-bold">A</span>
+                  </div>
+
+                  {/* Assistant message */}
+                  <div className={`max-w-xl px-4 py-2 rounded-lg ${message.role === "assistant" ? "bg-gray-300 text-gray-800 dark:bg-gray-700 dark:text-white" : ""}`}>
+                    {message.role === "assistant" ? (
+                      <div className="space-y-2">
+                        {formatMessage(message.content)}
                       </div>
                     ) : (
-                      formatMessage(message.content)
+                      message.content
                     )}
                   </div>
-                ) : (
-                  message.content
-                )}
-              </div>
+                </div>
+
+              )}
+
+              {message.role === "user" && (
+                <div className="flex items-center space-x-2">
+                  {/* User message */}
+                  <div className={`max-w-xl px-4 py-2 rounded-lg ${message.role === "user" ? "bg-blue-500 text-white" : ""}`}>
+                    {message.role === "user" ? (
+                      <div className="space-y-2">
+                        {formatMessage(message.content)}
+                      </div>
+                    ) : (
+                      message.content
+                    )}
+                  </div>
+
+                  {/* User icon */}
+                  <div className="w-[40px] h-[40px] bg-blue-500 rounded-full flex items-center justify-center">
+                    <span className="text-white font-bold">U</span>
+                  </div>
+                </div>
+              )}
             </div>
           ))}
         </div>
