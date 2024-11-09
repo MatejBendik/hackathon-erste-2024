@@ -47,6 +47,7 @@ const ChatComponent = () => {
     const updatedMessages = [
       ...messages,
       { role: "user", content: userMessage },
+      { role: "assistant", content: "..." },  // Loading placeholder for assistant
     ];
     setMessages(updatedMessages);
     setUserMessage("");
@@ -65,10 +66,15 @@ const ChatComponent = () => {
       console.log({ response });
 
       const aiResponse = response.data.response;
-      setMessages((prev) => [
-        ...prev,
-        { role: "assistant", content: aiResponse },
-      ]);
+      // Replace the loading message with the actual AI response
+      setMessages((prev) => {
+        const newMessages = [...prev];
+        newMessages[newMessages.length - 1] = {
+          role: "assistant",
+          content: aiResponse,
+        };
+        return newMessages;
+      });
     } catch (error) {
       if (axios.isAxiosError(error)) {
         console.error("Error sending message:", error.response?.data || error.message);
@@ -135,7 +141,6 @@ const ChatComponent = () => {
                     )}
                   </div>
                 </div>
-
               )}
 
               {message.role === "user" && (
