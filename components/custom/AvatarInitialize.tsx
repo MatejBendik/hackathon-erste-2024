@@ -213,31 +213,21 @@ const AvatarInitialize = ({
 									</Select>
 								</div>
 
-								{/*  Age of user */}
-								<div className="flex space-x-4 items-center w-full">
-									<Input
-										value={formData.age}
-										type="number"
-										placeholder="Age"
-										onChange={(e) =>
-											updateFormData("age", e.target.value)
-										}
-										className="border-[3px] border-[#2870ED] dark:bg-gray-700 "
-									/>
-								</div>
+								<Input
+									value={formData.age || ""}
+									type="number"
+									placeholder="Age"
+									onChange={(e) => updateFormData("age", e.target.value)}
+									className="border-[3px] border-[#2870ED] dark:bg-gray-700"
+								/>
 
-								{/* Age of future user */}
-								<div className="flex space-x-4 items-center w-full">
-									<Input
-										value={formData.futureAge}
-										type="number"
-										placeholder="Age in the future"
-										onChange={(e) =>
-											updateFormData("futureAge", e.target.value)
-										}
-										className="border-[3px] border-[#2870ED] dark:bg-gray-700 "
-									/>
-								</div>
+								<Input
+									value={formData.futureAge || ""}
+									type="number"
+									placeholder="Age in the future"
+									onChange={(e) => updateFormData("futureAge", e.target.value)}
+									className="border-[3px] border-[#2870ED] dark:bg-gray-700"
+								/>
 
 								<Textarea
 									name="hobbies"
