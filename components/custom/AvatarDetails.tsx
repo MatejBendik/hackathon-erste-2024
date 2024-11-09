@@ -1,6 +1,7 @@
 import { Button } from "../ui/button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Textarea } from "../ui/textarea";
+import { BackgroundBeamsWithCollision } from "@/components/ui/background-beams-with-collision";
 
 interface AvatarDetailsProps {
   onBack: () => void;
@@ -23,7 +24,8 @@ const AvatarDetails = ({
   formData,
 }: AvatarDetailsProps) => {
   return (
-    <div className="flex items-center justify-center bg-gray-100 dark:bg-gray-700">
+      <BackgroundBeamsWithCollision className="absolute inset-0 z-0">
+    <div className=" z-10 flex items-center justify-center">
       <div className="flex flex-col items-center w-auto rounded-[25px] w-[800px] mt-28 bg-[#F3F3F3] dark:bg-gray-800 p-8 shadow-[0px_8px_18px_11px_rgba(0,_0,_0,_0.1)]">
         {/* Header */}
         <span className="whitespace-nowrap text-[48px] font-bold bg-gradient-to-r tracking-normal from-purple-500 to-blue-500 inline-block text-transparent bg-clip-text">
@@ -101,6 +103,7 @@ const AvatarDetails = ({
         <ChevronRight />
       </Button>
     </div>
+      </BackgroundBeamsWithCollision>
   );
 };
 

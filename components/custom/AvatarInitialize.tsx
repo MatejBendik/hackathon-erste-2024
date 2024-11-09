@@ -8,6 +8,7 @@ import { Popover, PopoverContent, PopoverTrigger, } from "@/components/ui/popove
 import { Calendar } from "@/components/ui/calendar"
 import { cn } from "@/lib/utils"
 import { format } from "date-fns";
+import { BackgroundBeamsWithCollision } from "@/components/ui/background-beams-with-collision";
 
 interface AvatarInitializeProps {
 	onNext: () => void;
@@ -63,7 +64,8 @@ const AvatarInitialize = ({ onNext, updateFormData, formData }: AvatarInitialize
 
 
 	return (
-		<div className="flex items-center justify-center h-screen bg-gray-100 dark:bg-gray-700">
+		<BackgroundBeamsWithCollision className="absolute inset-0 z-0">
+		<div className=" z-10 flex items-center justify-center h-screen">
 			<div className="flex flex-col items-center w-auto h-[530px] rounded-[25px] bg-[#F3F3F3] dark:bg-gray-800 p-8 shadow-[0px_8px_18px_11px_rgba(0,_0,_0,_0.1)]">
 
 				{/* Header */}
@@ -183,6 +185,7 @@ const AvatarInitialize = ({ onNext, updateFormData, formData }: AvatarInitialize
 				<ChevronRight />
 			</Button>
 		</div>
+		</BackgroundBeamsWithCollision>
 	);
 };
 
