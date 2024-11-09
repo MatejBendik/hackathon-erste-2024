@@ -19,7 +19,7 @@ interface AvatarInitializeProps {
 const AvatarInitialize = ({ onNext, updateFormData, formData }: AvatarInitializeProps) => {
 	const hairImages = ["/Hair1.png", "/Hair2.png", "/Hair3.png", "/Hair4.png", "/Hair5.png"];
 	const bodyImages = ["/Body1.png", "/Body2.png", "/Body3.png", "/Body4.png"];
-	const mouthImages = ["/Mouth1.png", "/Mouth2.png", "/Mouth3.png", "/Mouth4.png", "/Mouth5.png"];
+	const mouthImages = ["/Mouth1.png", "/Mouth2.png", "/Mouth3.png", "/Mouth4.png", "/Mouth5.png", "/Mouth6.png"];
 
 
 	const handleNextHair = () => {
