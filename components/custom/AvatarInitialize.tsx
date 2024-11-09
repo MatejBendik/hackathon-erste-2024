@@ -64,7 +64,7 @@ const AvatarInitialize = ({ onNext, updateFormData, formData }: AvatarInitialize
 
 
 	return (
-		<BackgroundBeamsWithCollision className="absolute inset-0 z-0">
+		<BackgroundBeamsWithCollision className="inset-0 z-0">
 		<div className=" z-10 flex items-center justify-center h-screen">
 			<div className="flex flex-col items-center w-auto h-[530px] rounded-[25px] bg-[#F3F3F3] dark:bg-gray-800 p-8 shadow-[0px_8px_18px_11px_rgba(0,_0,_0,_0.1)]">
 
@@ -135,7 +135,7 @@ const AvatarInitialize = ({ onNext, updateFormData, formData }: AvatarInitialize
 								<SelectTrigger className="w-[180px] border-[3px] border-[#2870ED] dark:bg-gray-700">
 									<SelectValue placeholder="Gender" />
 								</SelectTrigger>
-								<SelectContent className=" dark:bg-gray-700">
+								<SelectContent className="dark:bg-gray-700">
 									<SelectItem value="male">Male</SelectItem>
 									<SelectItem value="female">Female</SelectItem>
 									<SelectItem value="ine">Other</SelectItem>
