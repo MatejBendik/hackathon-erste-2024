@@ -6,6 +6,8 @@ import ChatComponent from './ChatComponent';
 import { MutatingDots } from 'react-loader-spinner';
 import { BackgroundBeamsWithCollision } from "@/components/ui/background-beams-with-collision";
 
+import { redirect } from 'next/navigation'
+
 interface AvatarUsageProps {
   onBack: () => void;
   formData: {
@@ -31,8 +33,8 @@ const AvatarUsage = ({ onBack, formData }: AvatarUsageProps) => {
   const [apiResponse, setApiResponse] = useState<string | null>(null);
 
   const handleSubmit = async () => {
-    setIsLoading(true); // Start loader
-    setShowChat(false); // Ensure ChatComponent is hidden while loading
+    setIsLoading(true);
+    setShowChat(false);
 
     try {
       const response = await axios.post('/api/ai', {
@@ -48,19 +50,19 @@ const AvatarUsage = ({ onBack, formData }: AvatarUsageProps) => {
         lifestyle: formData.preffered_hobbies_and_activities,
       });
 
-      // Save the API response and set to show ChatComponent
       setApiResponse(response.data.choices[0].message.content);
       setShowChat(true);
     } catch (error) {
       console.error('Error submitting data:', error);
     } finally {
-      setIsLoading(false); // Stop loader
+      setIsLoading(false);
     }
   };
 
-  // Conditional rendering: show loader, ChatComponent, or form
   if (showChat && apiResponse) {
-    return <ChatComponent formData={formData} initialAnswer={apiResponse} />;
+    localStorage.setItem('initialAnswer', apiResponse)
+    localStorage.setItem('formData', JSON.stringify(formData))
+    redirect('/chat')
   }
 
   return (
