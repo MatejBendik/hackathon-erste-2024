@@ -4,8 +4,7 @@ import { Button } from '../ui/button';
 import { ChevronLeft } from 'lucide-react';
 import { MutatingDots } from 'react-loader-spinner';
 import { BackgroundBeamsWithCollision } from "@/components/ui/background-beams-with-collision";
-
-import { redirect } from 'next/navigation'
+import { redirect } from 'next/navigation';
 
 interface AvatarUsageProps {
   onBack: () => void;
@@ -59,46 +58,50 @@ const AvatarUsage = ({ onBack, formData }: AvatarUsageProps) => {
   };
 
   if (showChat && apiResponse) {
-    localStorage.setItem('initialAnswer', apiResponse)
-    localStorage.setItem('formData', JSON.stringify(formData))
-    redirect('/chat')
+    localStorage.setItem('initialAnswer', apiResponse);
+    localStorage.setItem('formData', JSON.stringify(formData));
+    redirect('/chat');
   }
 
   return (
-    <BackgroundBeamsWithCollision className="inset-0 z-0">
-      <div className="z-10 flex items-center justify-center h-screen ">
-        <div className="flex flex-col items-center w-auto h-[530px] rounded-[25px] bg-[#F3F3F3] dark:bg-gray-800 p-8 shadow-[0px_8px_18px_11px_rgba(0,_0,_0,_0.1)]">
-          <span className="whitespace-nowrap text-[48px] mb-16 font-bold bg-gradient-to-r tracking-normal from-purple-500 to-blue-500 inline-block text-transparent bg-clip-text">
-            Let's talk with your future you
-          </span>
-
-          {isLoading ? (
-            <MutatingDots
-              visible={true}
-              height="100"
-              width="100"
-              color="#2F74EE"
-              secondaryColor="#2F74EE"
-              radius="12.5"
-              ariaLabel="mutating-dots-loading"
-            />
-          ) : (
-            <Button className="mt-8" onClick={handleSubmit} size="lg">
-              Submit
+      <BackgroundBeamsWithCollision className="inset-0 z-0">
+        <div className="z-10 flex items-center justify-center h-screen">
+          <div className="flex flex-col md:flex-row items-center gap-4">
+            {/* Back Button */}
+            <Button
+                onClick={onBack}
+                className="text-[#2F74EE] dark:text-white dark:bg-gray-800 dark:hover:text-[#2F74EE] dark:hover:scale-[110%] hover:scale-[110%] w-[50px] h-[50px]"
+                variant="outline"
+                size="icon"
+            >
+              <ChevronLeft />
             </Button>
-          )}
-        </div>
 
-        <Button
-          onClick={onBack}
-          className="ml-8 absolute left-[20%] w-[50px] h-[50px] text-[#2F74EE] dark:text-white dark:bg-gray-800 dark:hover:text-[#2F74EE] dark:hover:scale-[110%] hover:scale-[110%]"
-          variant="outline"
-          size="icon"
-        >
-          <ChevronLeft />
-        </Button>
-      </div>
-    </BackgroundBeamsWithCollision>
+            {/* Main Content */}
+            <div className="flex flex-col items-center w-auto h-[530px] rounded-[25px] bg-[#F3F3F3] dark:bg-gray-800 p-8 shadow-[0px_8px_18px_11px_rgba(0,_0,_0,_0.1)]">
+            <span className="whitespace-nowrap text-[48px] mb-16 font-bold bg-gradient-to-r tracking-normal from-purple-500 to-blue-500 inline-block text-transparent bg-clip-text">
+              Let's talk with your future you
+            </span>
+
+              {isLoading ? (
+                  <MutatingDots
+                      visible={true}
+                      height="100"
+                      width="100"
+                      color="#2F74EE"
+                      secondaryColor="#2F74EE"
+                      radius="12.5"
+                      ariaLabel="mutating-dots-loading"
+                  />
+              ) : (
+                  <Button className="mt-8" onClick={handleSubmit} size="lg">
+                    Submit
+                  </Button>
+              )}
+            </div>
+          </div>
+        </div>
+      </BackgroundBeamsWithCollision>
   );
 };
 
