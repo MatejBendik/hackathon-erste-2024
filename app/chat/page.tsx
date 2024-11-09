@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import React, { useState, useEffect } from "react";
 import axios from "axios";
@@ -24,9 +24,13 @@ interface ChatComponentProps {
 }
 
 const ChatComponent = () => {
-  const [messages, setMessages] = useState<{ role: string; content: string }[]>([]);
+  const [messages, setMessages] = useState<{ role: string; content: string }[]>(
+    []
+  );
   const [userMessage, setUserMessage] = useState("");
-  const [formData, setFormData] = useState<ChatComponentProps["formData"] | null>(null);
+  const [formData, setFormData] = useState<
+    ChatComponentProps["formData"] | null
+  >(null);
 
   useEffect(() => {
     const storedFormData = localStorage.getItem("formData");
@@ -62,14 +66,19 @@ const ChatComponent = () => {
         formData,
       });
 
-      const aiResponse = response.data.choices[0].message.content;
+      console.log({ response });
+
+      const aiResponse = response.data.response;
       setMessages((prev) => [
         ...prev,
         { role: "assistant", content: aiResponse },
       ]);
     } catch (error) {
       if (axios.isAxiosError(error)) {
-        console.error("Error sending message:", error.response?.data || error.message);
+        console.error(
+          "Error sending message:",
+          error.response?.data || error.message
+        );
       } else {
         console.error("Error sending message:", error);
       }
@@ -88,13 +97,13 @@ const ChatComponent = () => {
         } else if (segment.match(/^\d+\.\s/)) {
           return (
             <li key={i} className="list-decimal ml-6">
-              {segment.replace(/^\d+\.\s/, '')}
+              {segment.replace(/^\d+\.\s/, "")}
             </li>
           );
-        } else if (segment.startsWith('* ')) {
+        } else if (segment.startsWith("* ")) {
           return (
             <li key={i} className="list-disc ml-6">
-              {segment.replace('* ', '')}
+              {segment.replace("* ", "")}
             </li>
           );
         }
@@ -116,16 +125,21 @@ const ChatComponent = () => {
           {messages.map((message, index) => (
             <div
               key={index}
-              className={`flex ${message.role === "user" ? "justify-end" : "justify-start"}`}
+              className={`flex ${
+                message.role === "user" ? "justify-end" : "justify-start"
+              }`}
             >
               <div
-                className={`max-w-xl px-4 py-2 rounded-lg ${message.role === "user"
-                  ? "bg-blue-500 text-white"
-                  : "bg-gray-300 text-gray-800 dark:bg-gray-700 dark:text-white"
-                  }`}
+                className={`max-w-xl px-4 py-2 rounded-lg ${
+                  message.role === "user"
+                    ? "bg-blue-500 text-white"
+                    : "bg-gray-300 text-gray-800 dark:bg-gray-700 dark:text-white"
+                }`}
               >
                 {message.role === "assistant" ? (
-                  <div className="space-y-2">{formatMessage(message.content)}</div>
+                  <div className="space-y-2">
+                    {formatMessage(message.content)}
+                  </div>
                 ) : (
                   message.content
                 )}
