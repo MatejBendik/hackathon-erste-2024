@@ -24,13 +24,10 @@ interface ChatComponentProps {
 }
 
 const ChatComponent = () => {
-  const [messages, setMessages] = useState<{ role: string; content: string }[]>(
-    []
-  );
+  const [messages, setMessages] = useState<{ role: string; content: string }[]>([]);
   const [userMessage, setUserMessage] = useState("");
-  const [formData, setFormData] = useState<
-    ChatComponentProps["formData"] | null
-  >(null);
+  const [formData, setFormData] = useState<ChatComponentProps["formData"] | null>(null);
+  const [loading, setLoading] = useState(false); // Step 1: State for loading
 
   useEffect(() => {
     const storedFormData = localStorage.getItem("formData");
@@ -60,6 +57,9 @@ const ChatComponent = () => {
       return;
     }
 
+    // Step 2: Set loading to true before the API call
+    setLoading(true);
+
     try {
       const response = await axios.post("/api/ai/chat", {
         userMessage,
@@ -67,49 +67,42 @@ const ChatComponent = () => {
       });
 
       const aiResponse = response.data.response;
+
+      // Step 3: After receiving the response, stop loading and update the messages
       setMessages((prev) => [
         ...prev,
         { role: "assistant", content: aiResponse },
       ]);
+      setLoading(false); // Stop loading after response
     } catch (error) {
       if (axios.isAxiosError(error)) {
-        console.error(
-          "Error sending message:",
-          error.response?.data || error.message
-        );
+        console.error("Error sending message:", error.response?.data || error.message);
       } else {
         console.error("Error sending message:", error);
       }
+      setLoading(false); // Stop loading in case of an error
     }
   };
 
   const formatMessage = (text: string) => {
     return text.split(/\n/).map((line, index) => {
-      // Split line into segments, detect bold text (**bold**) and numbered list (1. item)
       const formattedLine = line.split(/(\*\*[^*]+\*\*)/).map((segment, i) => {
-        // Check for bold text
         if (segment.startsWith("**") && segment.endsWith("**")) {
           return (
             <strong key={i} className="font-semibold text-blue-600 dark:text-blue-500">
               {segment.slice(2, -2)}
             </strong>
           );
-        }
-
-        // Handle unordered list (* item)
-        else if (segment.startsWith("* ")) {
+        } else if (segment.startsWith("* ")) {
           return (
             <li key={i} className="list-disc ml-6">
               {segment.replace("* ", "")}
             </li>
           );
         }
-
-        // Default case, return the segment as plain text
         return segment;
       });
 
-      // Wrap the formatted line into a <p> tag for each new line
       return (
         <p key={index} className="mb-2">
           {formattedLine}
@@ -118,7 +111,6 @@ const ChatComponent = () => {
     });
   };
 
-
   return (
     <BackgroundBeamsWithCollision className="inset-0 z-0">
       <div className="z-10 flex flex-col h-screen p-6 ">
@@ -126,8 +118,7 @@ const ChatComponent = () => {
           {messages.map((message, index) => (
             <div
               key={index}
-              className={`flex ${message.role === "user" ? "justify-end" : "justify-start"
-                }`}
+              className={`flex ${message.role === "user" ? "justify-end" : "justify-start"}`}
             >
               <div
                 className={`max-w-xl px-4 py-2 rounded-lg ${message.role === "user"
@@ -137,7 +128,15 @@ const ChatComponent = () => {
               >
                 {message.role === "assistant" ? (
                   <div className="space-y-2">
-                    {formatMessage(message.content)}
+                    {/* Step 4: Show loader if loading is true */}
+                    {loading ? (
+                      <div className="flex justify-center items-center space-x-2">
+                        <div className="w-4 h-4 border-2 border-t-2 border-blue-500 rounded-full animate-spin" />
+                        <span>AI is thinking...</span>
+                      </div>
+                    ) : (
+                      formatMessage(message.content)
+                    )}
                   </div>
                 ) : (
                   message.content
