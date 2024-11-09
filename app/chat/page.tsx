@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import React, { useState, useEffect } from "react";
 import axios from "axios";
@@ -24,13 +24,9 @@ interface ChatComponentProps {
 }
 
 const ChatComponent = () => {
-  const [messages, setMessages] = useState<{ role: string; content: string }[]>(
-    []
-  );
+  const [messages, setMessages] = useState<{ role: string; content: string }[]>([]);
   const [userMessage, setUserMessage] = useState("");
-  const [formData, setFormData] = useState<
-    ChatComponentProps["formData"] | null
-  >(null);
+  const [formData, setFormData] = useState<ChatComponentProps["formData"] | null>(null);
 
   useEffect(() => {
     const storedFormData = localStorage.getItem("formData");
@@ -75,10 +71,7 @@ const ChatComponent = () => {
       ]);
     } catch (error) {
       if (axios.isAxiosError(error)) {
-        console.error(
-          "Error sending message:",
-          error.response?.data || error.message
-        );
+        console.error("Error sending message:", error.response?.data || error.message);
       } else {
         console.error("Error sending message:", error);
       }
@@ -90,85 +83,104 @@ const ChatComponent = () => {
       const formattedLine = line.split(/(\*\*[^*]+\*\*)/).map((segment, i) => {
         if (segment.startsWith("**") && segment.endsWith("**")) {
           return (
-            <strong key={i} className="font-semibold text-blue-600">
-              {segment.slice(2, -2)}
-            </strong>
+              <strong key={i} className="font-semibold text-blue-600">
+                {segment.slice(2, -2)}
+              </strong>
           );
         } else if (segment.match(/^\d+\.\s/)) {
           return (
-            <li key={i} className="list-decimal ml-6">
-              {segment.replace(/^\d+\.\s/, "")}
-            </li>
+              <li key={i} className="list-decimal ml-6">
+                {segment.replace(/^\d+\.\s/, "")}
+              </li>
           );
         } else if (segment.startsWith("* ")) {
           return (
-            <li key={i} className="list-disc ml-6">
-              {segment.replace("* ", "")}
-            </li>
+              <li key={i} className="list-disc ml-6">
+                {segment.replace("* ", "")}
+              </li>
           );
         }
         return segment;
       });
 
       return (
-        <p key={index} className="mb-2">
-          {formattedLine}
-        </p>
+          <p key={index} className="mb-2">
+            {formattedLine}
+          </p>
       );
     });
   };
 
   return (
-    <BackgroundBeamsWithCollision className="inset-0 z-0">
-      <div className="z-10 flex flex-col h-screen p-6 ">
-        <div className="flex-grow overflow-y-auto mt-20 p-4 mb-4 space-y-4 rounded-lg">
-          {messages.map((message, index) => (
-            <div
-              key={index}
-              className={`flex ${
-                message.role === "user" ? "justify-end" : "justify-start"
-              }`}
+      <BackgroundBeamsWithCollision className="inset-0 z-0">
+        <div className="z-10 flex flex-col h-screen p-6">
+          <div className="flex-grow overflow-y-auto mt-20 p-4 mb-4 space-y-4 rounded-lg">
+            {messages.map((message, index) => (
+                <div key={index} className={`flex ${message.role === "user" ? "justify-end" : "justify-start"}`}>
+                  {message.role === "assistant" && (
+                      <div className="flex items-center space-x-2">
+                        {/* Assistant icon */}
+                        <div className="w-[40px] h-[40px] bg-gray-300 rounded-full flex items-center justify-center">
+                          <span className="text-white font-bold">A</span>
+                        </div>
+
+                        {/* Assistant message */}
+                        <div className={`max-w-xl px-4 py-2 rounded-lg ${message.role === "assistant" ? "bg-gray-300 text-gray-800 dark:bg-gray-700 dark:text-white" : ""}`}>
+                          {message.role === "assistant" ? (
+                              <div className="space-y-2">
+                                {formatMessage(message.content)}
+                              </div>
+                          ) : (
+                              message.content
+                          )}
+                        </div>
+                      </div>
+                  )}
+
+                  {message.role === "user" && (
+                      <div className="flex items-center space-x-2">
+                        {/* User message */}
+                        <div className={`max-w-xl px-4 py-2 rounded-lg ${message.role === "user" ? "bg-blue-500 text-white" : ""}`}>
+                          {message.role === "user" ? (
+                              <div className="space-y-2">
+                                {formatMessage(message.content)}
+                              </div>
+                          ) : (
+                              message.content
+                          )}
+                        </div>
+
+                        {/* User icon */}
+                        <div className="w-[40px] h-[40px] bg-blue-500 rounded-full flex items-center justify-center">
+                          <span className="text-white font-bold">U</span>
+                        </div>
+                      </div>
+                  )}
+                </div>
+            ))}
+          </div>
+          <div className="flex items-center space-x-2">
+            <input
+                type="text"
+                value={userMessage}
+                onChange={(e) => setUserMessage(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    handleSendMessage();
+                  }
+                }}
+                placeholder="Type a message..."
+                className="flex-grow p-2 border border-gray-300 rounded-lg dark:bg-gray-800 dark:text-white dark:border-gray-600"
+            />
+            <button
+                onClick={handleSendMessage}
+                className="px-4 py-2 font-semibold text-white bg-blue-500 rounded-lg hover:bg-blue-600"
             >
-              <div
-                className={`max-w-xl px-4 py-2 rounded-lg ${
-                  message.role === "user"
-                    ? "bg-blue-500 text-white"
-                    : "bg-gray-300 text-gray-800 dark:bg-gray-700 dark:text-white"
-                }`}
-              >
-                {message.role === "assistant" ? (
-                  <div className="space-y-2">
-                    {formatMessage(message.content)}
-                  </div>
-                ) : (
-                  message.content
-                )}
-              </div>
-            </div>
-          ))}
+              Send
+            </button>
+          </div>
         </div>
-        <div className="flex items-center space-x-2">
-          <input
-            type="text"
-            value={userMessage}
-            onChange={(e) => setUserMessage(e.target.value)}
-            onKeyDown={(e) => {
-              if (e.key === "Enter") {
-                handleSendMessage();
-              }
-            }}
-            placeholder="Type a message..."
-            className="flex-grow p-2 border border-gray-300 rounded-lg dark:bg-gray-800 dark:text-white dark:border-gray-600"
-          />
-          <button
-            onClick={handleSendMessage}
-            className="px-4 py-2 font-semibold text-white bg-blue-500 rounded-lg hover:bg-blue-600"
-          >
-            Send
-          </button>
-        </div>
-      </div>
-    </BackgroundBeamsWithCollision>
+      </BackgroundBeamsWithCollision>
   );
 };
 

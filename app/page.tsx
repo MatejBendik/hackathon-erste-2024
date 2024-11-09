@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { BackgroundBeamsWithCollision } from "@/components/ui/background-beams-with-collision";
 
 export default function Home() {
+
   return (
     <BackgroundBeamsWithCollision>
       <div className="flex flex-col items-center">

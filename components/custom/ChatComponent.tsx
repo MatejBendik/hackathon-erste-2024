@@ -98,6 +98,7 @@ const ChatComponent = ({ formData, initialAnswer }: ChatComponentProps) => {
     <BackgroundBeamsWithCollision className="inset-0 z-0">
       <div className="z-10 flex flex-col h-screen p-6 ">
 
+
         <div className=" flex-grow overflow-y-auto mt-20 p-4 mb-4 space-y-4 rounded-lg">
           {messages.map((message, index) => (
             <div
