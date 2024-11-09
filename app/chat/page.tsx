@@ -93,12 +93,6 @@ const ChatComponent = () => {
               {segment.slice(2, -2)}
             </strong>
           );
-        } else if (segment.match(/^\d+\.\s/)) {
-          return (
-            <li key={i} className="list-decimal ml-6">
-              {segment.replace(/^\d+\.\s/, "")}
-            </li>
-          );
         } else if (segment.startsWith("* ")) {
           return (
             <li key={i} className="list-disc ml-6">
