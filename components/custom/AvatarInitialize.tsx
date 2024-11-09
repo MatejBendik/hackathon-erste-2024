@@ -144,17 +144,11 @@ const AvatarInitialize = ({ onNext, updateFormData, formData, mode }: AvatarInit
 
 								{/* Date of Birth Picker */}
 								<div className="flex space-x-4 items-center w-full">
-									<Popover>
-										<PopoverTrigger asChild>
-											<Button variant="outline" className={cn("w-[180px] justify-start border-[3px] border-[#2870ED] dark:bg-gray-700", !formData.birthDate && "text-muted-foreground")}>
-												<CalendarIcon className="mr-2 h-4 w-4" />
-												{formData.birthDate ? format(new Date(formData.birthDate), "PPP") : <span>Pick a date</span>}
-											</Button>
-										</PopoverTrigger>
-										<PopoverContent className="w-auto p-0 dark:bg-gray-700">
-											<Calendar mode="single" selected={formData.birthDate ? new Date(formData.birthDate) : undefined} onSelect={(date) => date && updateFormData("birthDate", date.toISOString())} />
-										</PopoverContent>
-									</Popover>
+									<Input
+										type="date"
+										placeholder="Dátum narodenia"
+										className="border-[3px] border-[#2870ED] dark:bg-gray-700 "
+									/>
 								</div>
 
 								<Textarea name="hobbies" value={formData.hobbies} placeholder="Enter hobbies" onChange={(e) => updateFormData(e.target.name, e.target.value)} className="border-[3px] border-[#2870ED] dark:bg-gray-700" />
