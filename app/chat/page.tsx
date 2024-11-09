@@ -125,11 +125,11 @@ const ChatComponent = () => {
                   {/* Assistant icon */}
                   <div className="w-[40px] h-[40px] bg-gray-300 rounded-full flex items-center justify-center">
                     {/* Avatar Image */}
-                    <img src={bodyImages[formData?.currentBodyIndex ?? 0]} alt="avatar" className="rounded-lg" />
+                    <img src={bodyImages[formData?.currentBodyIndex ?? 0]} alt="avatar" height="20px" width="20px" className="rounded-lg translate-x-[13px] translate-y-[10px]" />
                     {/* Hair Image */}
-                    <img src={hairImages[formData?.currentHairIndex ?? 0]} alt="hair" className="rounded-lg" />
+                    <img src={hairImages[formData?.currentHairIndex ?? 0]} alt="hair" height="20px" width="20px" className="rounded-lg translate-y-[-10px] translate-x-[-7px] " />
                     {/* Mouth Image */}
-                    <img src={mouthImages[formData?.currentMouthIndex ?? 0]} alt="mouth" className="rounded-lg" />
+                    <img src={mouthImages[formData?.currentMouthIndex ?? 0]} alt="mouth" height="8px" width="8px" className="rounded-lg translate-y-[-2px] translate-x-[-21px]" />
 
                   </div>
 
