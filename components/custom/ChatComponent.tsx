@@ -58,24 +58,24 @@ const ChatComponent = ({ formData, initialAnswer }: ChatComponentProps) => {
   // Helper function to format GPT answers
   const formatMessage = (text: string) => {
     return text.split(/\n|(\d\.\s|\*\*|\* )/).map((part, index) => {
-      if (part.startsWith("**")) {
+      if (part?.startsWith("**")) {
         return (
           <span key={index} className="font-bold text-blue-600">
-            {part.replace(/\*\*/g, "")}
+            {part?.replace(/\*\*/g, "")}
           </span>
         );
       }
-      if (part.startsWith("* ")) {
+      if (part?.startsWith("* ")) {
         return (
           <li key={index} className="list-disc ml-4">
-            {part.replace("* ", "")}
+            {part?.replace("* ", "")}
           </li>
         );
       }
       if (part.match(/^\d\.\s/)) {
         return (
           <li key={index} className="list-decimal ml-4">
-            {part.replace(/^\d\.\s/, "")}
+            {part?.replace(/^\d\.\s/, "")}
           </li>
         );
       }
@@ -84,48 +84,48 @@ const ChatComponent = ({ formData, initialAnswer }: ChatComponentProps) => {
   };
 
   return (
-      <BackgroundBeamsWithCollision className="inset-0 z-0">
-    <div className="z-10 flex flex-col h-screen p-6 ">
+    <BackgroundBeamsWithCollision className="inset-0 z-0">
+      <div className="z-10 flex flex-col h-screen p-6 ">
 
-      <div className=" flex-grow overflow-y-auto mt-20 p-4 mb-4 space-y-4 rounded-lg">
-        {messages.map((message, index) => (
-          <div
-            key={index}
-            className={`flex ${message.role === "user" ? "justify-end" : "justify-start"}`}
-          >
+        <div className=" flex-grow overflow-y-auto mt-20 p-4 mb-4 space-y-4 rounded-lg">
+          {messages.map((message, index) => (
             <div
-              className={`max-w-xl px-4 py-2 rounded-lg ${message.role === "user"
-                ? "bg-blue-500 text-white"
-                : "bg-gray-300 text-gray-800 dark:bg-gray-700 dark:text-white"
-                }`}
+              key={index}
+              className={`flex ${message.role === "user" ? "justify-end" : "justify-start"}`}
             >
-              {message.role === "assistant" ? (
-                <div className="space-y-2">{formatMessage(message.content)}</div>
-              ) : (
-                message.content
-              )}
+              <div
+                className={`max-w-xl px-4 py-2 rounded-lg ${message.role === "user"
+                  ? "bg-blue-500 text-white"
+                  : "bg-gray-300 text-gray-800 dark:bg-gray-700 dark:text-white"
+                  }`}
+              >
+                {message.role === "assistant" ? (
+                  <div className="space-y-2">{formatMessage(message.content)}</div>
+                ) : (
+                  message.content
+                )}
+              </div>
             </div>
-          </div>
-        ))}
-      </div>
-      <div className="flex items-center space-x-2">
-        <input
-          type="text"
-          value={userMessage}
-          onChange={(e) => setUserMessage(e.target.value)}
-          placeholder="Type a message..."
-          className="flex-grow p-2 border border-gray-300 rounded-lg dark:bg-gray-800 dark:text-white dark:border-gray-600"
-        />
-        <button
-          onClick={handleSendMessage}
-          className="px-4 py-2 font-semibold text-white bg-blue-500 rounded-lg hover:bg-blue-600"
-        >
-          Send
-        </button>
-      </div>
+          ))}
+        </div>
+        <div className="flex items-center space-x-2">
+          <input
+            type="text"
+            value={userMessage}
+            onChange={(e) => setUserMessage(e.target.value)}
+            placeholder="Type a message..."
+            className="flex-grow p-2 border border-gray-300 rounded-lg dark:bg-gray-800 dark:text-white dark:border-gray-600"
+          />
+          <button
+            onClick={handleSendMessage}
+            className="px-4 py-2 font-semibold text-white bg-blue-500 rounded-lg hover:bg-blue-600"
+          >
+            Send
+          </button>
+        </div>
 
-    </div>
-      </BackgroundBeamsWithCollision>
+      </div>
+    </BackgroundBeamsWithCollision>
 
   );
 };
