@@ -51,9 +51,13 @@ const ChatComponent = () => {
     setMessages(updatedMessages);
     setUserMessage("");
 
+    if (!formData) {
+      console.error("Form data is missing, cannot proceed with message send.");
+      return;
+    }
+
     try {
       const response = await axios.post("/api/ai/chat", {
-        messages: updatedMessages,
         userMessage,
         formData,
       });
@@ -64,7 +68,11 @@ const ChatComponent = () => {
         { role: "assistant", content: aiResponse },
       ]);
     } catch (error) {
-      console.error("Error sending message:", error);
+      if (axios.isAxiosError(error)) {
+        console.error("Error sending message:", error.response?.data || error.message);
+      } else {
+        console.error("Error sending message:", error);
+      }
     }
   };
 
