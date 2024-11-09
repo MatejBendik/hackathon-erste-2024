@@ -84,15 +84,17 @@ const AvatarUsage = ({ onBack, formData }: AvatarUsageProps) => {
           <img src={mouthImages[formData.currentMouthIndex]} alt="avatar" className="mt-48 translate-y-[-10px]  absolute scale-75 rounded-lg" />
 
           {isLoading ? (
-            <MutatingDots
-              visible={true}
-              height="100"
-              width="100"
-              color="#2F74EE"
-              secondaryColor="#2F74EE"
-              radius="12.5"
-              ariaLabel="mutating-dots-loading"
-            />
+            <div className='pt-60'>
+              <MutatingDots
+                visible={true}
+                height="100"
+                width="100"
+                color="#2F74EE"
+                secondaryColor="#2F74EE"
+                radius="12.5"
+                ariaLabel="mutating-dots-loading"
+              />
+            </div>
           ) : (
             <Button className="mt-72" onClick={handleSubmit} size="lg">
               Move to chat !
