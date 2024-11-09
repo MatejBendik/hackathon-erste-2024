@@ -21,7 +21,7 @@ const CreateAvatar = () => {
     health_preferences_and_habits: "",
     financial_situation_and_goals: "",
     relationships_and_family: "",
-    preffered_hobbies_and_activities: "",
+    preffered_hobbies_and_activities: ""
   });
 
   const updateFormData = (name: string, value: string) => {
@@ -39,7 +39,7 @@ const CreateAvatar = () => {
   const renderStepContent = () => {
     if (step === 1) return <AvatarInitialize onNext={handleNext} updateFormData={updateFormData} formData={formData} />;
     if (step === 2) return <AvatarDetails onBack={handleBack} onNext={handleNext} updateFormData={updateFormData} formData={formData} />;
-    if (step === 3) return <AvatarUsage onBack={handleBack} />;
+    if (step === 3) return <AvatarUsage onBack={handleBack} formData={formData} />;
   };
 
   return (
