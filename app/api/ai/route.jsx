@@ -48,7 +48,7 @@ export async function POST(request) {
           content: [
             {
               type: "text",
-              text: "What will happen with me in the future.",
+              text: "What will happen with me in the future. Keep the response short and simple.",
             },
           ],
         },
@@ -57,7 +57,7 @@ export async function POST(request) {
           content: [
             {
               type: "text",
-              text: "Help me with my future. Give me some advices based on my personal information.",
+              text: "Help me with my future. Give me some advices based on my personal information. Keep the response short and simple.",
             },
           ],
           tool_calls: [
@@ -86,13 +86,13 @@ export async function POST(request) {
           content: [
             {
               type: "text",
-              text: "Based on your personal information, give me some advice on how to improve your future.",
+              text: "Based on your personal information, give me some advice on how to improve your future. Keep the response short and simple.",
             },
           ],
         },
       ],
       temperature: 0.7,
-      max_tokens: 150,
+      max_tokens: 200,
       top_p: 0.9,
       frequency_penalty: 0,
       presence_penalty: 0,
