@@ -57,29 +57,39 @@ const ChatComponent = ({ formData, initialAnswer }: ChatComponentProps) => {
 
   // Helper function to format GPT answers
   const formatMessage = (text: string) => {
-    return text.split(/\n|(\d\.\s|\*\*|\* )/).map((part, index) => {
-      if (part?.startsWith("**")) {
-        return (
-          <span key={index} className="font-bold text-blue-600">
-            {part?.replace(/\*\*/g, "")}
-          </span>
-        );
-      }
-      if (part?.startsWith("* ")) {
-        return (
-          <li key={index} className="list-disc ml-4">
-            {part?.replace("* ", "")}
-          </li>
-        );
-      }
-      if (part.match(/^\d\.\s/)) {
-        return (
-          <li key={index} className="list-decimal ml-4">
-            {part?.replace(/^\d\.\s/, "")}
-          </li>
-        );
-      }
-      return <span key={index}>{part}</span>;
+    return text.split(/\n/).map((line, index) => {
+      // Handle bold text within each line using **...** markers
+      const formattedLine = line.split(/(\*\*[^*]+\*\*)/).map((segment, i) => {
+        if (segment.startsWith("**") && segment.endsWith("**")) {
+          return (
+            <strong key={i} className="font-semibold text-blue-600">
+              {segment.slice(2, -2)}  {/* Remove ** on both ends */}
+            </strong>
+          );
+        } else if (segment.match(/^\d+\.\s/)) {
+          // If the line is a numbered item (e.g., "1. "), format it as a list item
+          return (
+            <li key={i} className="list-decimal ml-6">
+              {segment.replace(/^\d+\.\s/, '')}
+            </li>
+          );
+        } else if (segment.startsWith('* ')) {
+          // If the line is a bullet point, format it as a bullet list item
+          return (
+            <li key={i} className="list-disc ml-6">
+              {segment.replace('* ', '')}
+            </li>
+          );
+        }
+        return segment;
+      });
+
+      // Return each line in a paragraph, allowing nested bold or list items
+      return (
+        <p key={index} className="mb-2">
+          {formattedLine}
+        </p>
+      );
     });
   };
 
