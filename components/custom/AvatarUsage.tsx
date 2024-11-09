@@ -28,6 +28,11 @@ interface AvatarUsageProps {
 
 const AvatarUsage = ({ onBack, formData }: AvatarUsageProps) => {
   const [isLoading, setIsLoading] = useState(false);
+
+  const hairImages = ["/Hair1.png", "/Hair2.png", "/Hair3.png", "/Hair4.png", "/Hair5.png"];
+  const bodyImages = ["/Body1.png", "/Body2.png", "/Body3.png", "/Body4.png"];
+  const mouthImages = ["/Mouth1.png", "/Mouth2.png", "/Mouth3.png", "/Mouth4.png", "/Mouth5.png", "/Mouth6.png"];
+
   const [showChat, setShowChat] = useState(false);
   const [apiResponse, setApiResponse] = useState<string | null>(null);
 
@@ -72,6 +77,13 @@ const AvatarUsage = ({ onBack, formData }: AvatarUsageProps) => {
             Let's talk with your future you
           </span>
 
+          {/* Avatar Image */}
+          <img src={bodyImages[formData.currentBodyIndex]} alt="avatar" className="  absolute scale-75  rounded-lg" />
+          {/* Hair Image */}
+          <img src={hairImages[formData.currentHairIndex]} alt="hair" className=" absolute  rounded-lg scale-75" />
+          {/* Avatar Image */}
+          <img src={mouthImages[formData.currentMouthIndex]} alt="avatar" className="  absolute scale-75 rounded-lg" />
+
           {isLoading ? (
             <MutatingDots
               visible={true}
@@ -84,7 +96,7 @@ const AvatarUsage = ({ onBack, formData }: AvatarUsageProps) => {
             />
           ) : (
             <Button className="mt-8" onClick={handleSubmit} size="lg">
-              Submit
+              Move to chat !
             </Button>
           )}
         </div>
