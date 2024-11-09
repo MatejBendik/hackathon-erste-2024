@@ -28,6 +28,10 @@ const ChatComponent = () => {
   const [userMessage, setUserMessage] = useState("");
   const [formData, setFormData] = useState<ChatComponentProps["formData"] | null>(null);
 
+  const hairImages = ["/Hair1.png", "/Hair2.png", "/Hair3.png", "/Hair4.png", "/Hair5.png"];
+  const bodyImages = ["/Body1.png", "/Body2.png", "/Body3.png", "/Body4.png"];
+  const mouthImages = ["/Mouth1.png", "/Mouth2.png", "/Mouth3.png", "/Mouth4.png", "/Mouth5.png", "/Mouth6.png"];
+
   useEffect(() => {
     const storedFormData = localStorage.getItem("formData");
     const storedInitialAnswer = localStorage.getItem("initialAnswer");
@@ -120,7 +124,13 @@ const ChatComponent = () => {
                 <div className="flex items-center space-x-2">
                   {/* Assistant icon */}
                   <div className="w-[40px] h-[40px] bg-gray-300 rounded-full flex items-center justify-center">
-                    <span className="text-white font-bold">A</span>
+                    {/* Avatar Image */}
+                    <img src={bodyImages[formData?.currentBodyIndex ?? 0]} alt="avatar" className="rounded-lg" />
+                    {/* Hair Image */}
+                    <img src={hairImages[formData?.currentHairIndex ?? 0]} alt="hair" className="rounded-lg" />
+                    {/* Mouth Image */}
+                    <img src={mouthImages[formData?.currentMouthIndex ?? 0]} alt="mouth" className="rounded-lg" />
+
                   </div>
 
                   {/* Assistant message */}
