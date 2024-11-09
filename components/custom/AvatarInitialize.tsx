@@ -164,7 +164,7 @@ const AvatarInitialize = ({ onNext, updateFormData, formData, mode }: AvatarInit
 
 					{/* Next Button */}
 					<Button className="w-[50px] h-[50px] text-[#2F74EE] dark:text-white dark:bg-gray-800 dark:hover:text-[#2F74EE] dark:hover:scale-[110%] hover:scale-[110%]" onClick={onNext}>
-						>
+						<ChevronRight />
 					</Button>
 				</div>
 			</div>
