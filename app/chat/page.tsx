@@ -47,7 +47,7 @@ const ChatComponent = () => {
     const updatedMessages = [
       ...messages,
       { role: "user", content: userMessage },
-      { role: "assistant", content: "..." },  // Loading placeholder for assistant
+      { role: "assistant", content: "..." },
     ];
     setMessages(updatedMessages);
     setUserMessage("");
@@ -66,7 +66,6 @@ const ChatComponent = () => {
       console.log({ response });
 
       const aiResponse = response.data.response;
-      // Replace the loading message with the actual AI response
       setMessages((prev) => {
         const newMessages = [...prev];
         newMessages[newMessages.length - 1] = {

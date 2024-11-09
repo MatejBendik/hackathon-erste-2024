@@ -4,11 +4,13 @@ import { SignedIn, SignedOut, UserButton, SignInButton } from "@clerk/nextjs";
 import * as React from "react"
 import { Moon, Sun } from "lucide-react"
 import { useTheme } from "next-themes"
-
 import { Button } from "@/components/ui/button"
+import { UserPen } from 'lucide-react';
+
 import Image from 'next/image'
 
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
+import Link from "next/link";
 
 const Navbar = () => {
   const { setTheme } = useTheme()
@@ -35,6 +37,17 @@ const Navbar = () => {
       </div> */}
 
       <div className="flex items-center space-x-4">
+        {localStorage.getItem("formData") &&
+          <Button variant="outline" size="icon">
+            <Link href={{
+              pathname: "/avatar",
+              query: { mode: "edit" }
+            }}>
+              <UserPen />
+            </Link>
+          </Button>
+        }
+
         {/* Dark mode toggle */}
         <DropdownMenu>
           <DropdownMenuTrigger asChild>

@@ -19,7 +19,12 @@ export default function Home() {
         </div>
         <div>
           <Button asChild size="lg">
-            <Link href="/create-avatar">Create Your Avatar</Link>
+            <Link href={{
+              pathname: "/avatar",
+              query: { mode: "create" }
+            }}>
+              Create Your Avatar
+            </Link>
           </Button>
         </div>
       </div>
