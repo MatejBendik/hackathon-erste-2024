@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import { Button } from '../ui/button';
 import { ChevronLeft } from 'lucide-react';
+import { MutatingDots } from 'react-loader-spinner';
 
 interface AvatarUsageProps {
   onBack: () => void;
@@ -23,7 +24,10 @@ interface AvatarUsageProps {
 }
 
 const AvatarUsage = ({ onBack, formData }: AvatarUsageProps) => {
+  const [isLoading, setIsLoading] = useState(false);
+
   const handleSubmit = async () => {
+    setIsLoading(true);
     try {
       const response = await axios.post('/api/ai', {
         name: formData.name,
@@ -39,9 +43,10 @@ const AvatarUsage = ({ onBack, formData }: AvatarUsageProps) => {
       });
 
       console.log('API response:', response.data);
-
     } catch (error) {
       console.error('Error submitting data:', error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -53,10 +58,22 @@ const AvatarUsage = ({ onBack, formData }: AvatarUsageProps) => {
           Let's talk with your future you
         </span>
 
-        {/* Button to submit */}
-        <Button className="mt-8" onClick={handleSubmit} size="lg">
-          Submit
-        </Button>
+        {/* Loader or Submit Button */}
+        {isLoading ? (
+          <MutatingDots
+            visible={true}
+            height="100"
+            width="100"
+            color="#2F74EE"
+            secondaryColor="#2F74EE"
+            radius="12.5"
+            ariaLabel="mutating-dots-loading"
+          />
+        ) : (
+          <Button className="mt-8" onClick={handleSubmit} size="lg">
+            Submit
+          </Button>
+        )}
       </div>
 
       {/* Back Button */}
