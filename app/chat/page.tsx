@@ -57,7 +57,6 @@ const ChatComponent = () => {
       return;
     }
 
-    // Step 2: Set loading to true before the API call
     setLoading(true);
 
     try {
@@ -68,19 +67,18 @@ const ChatComponent = () => {
 
       const aiResponse = response.data.response;
 
-      // Step 3: After receiving the response, stop loading and update the messages
       setMessages((prev) => [
         ...prev,
         { role: "assistant", content: aiResponse },
       ]);
-      setLoading(false); // Stop loading after response
+      setLoading(false);
     } catch (error) {
       if (axios.isAxiosError(error)) {
         console.error("Error sending message:", error.response?.data || error.message);
       } else {
         console.error("Error sending message:", error);
       }
-      setLoading(false); // Stop loading in case of an error
+      setLoading(false);
     }
   };
 
