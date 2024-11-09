@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import axios from 'axios';
+import React, { useState } from "react";
+import axios from "axios";
 
 interface ChatComponentProps {
   formData: {
@@ -21,26 +21,34 @@ interface ChatComponentProps {
 }
 
 const ChatComponent = ({ formData, initialAnswer }: ChatComponentProps) => {
-  const [messages, setMessages] = useState([{ role: 'assistant', content: initialAnswer }]);
-  const [userMessage, setUserMessage] = useState('');
+  const [messages, setMessages] = useState([
+    { role: "assistant", content: initialAnswer },
+  ]);
+  const [userMessage, setUserMessage] = useState("");
 
   const handleSendMessage = async () => {
     if (!userMessage.trim()) return;
 
-    const updatedMessages = [...messages, { role: 'user', content: userMessage }];
+    const updatedMessages = [
+      ...messages,
+      { role: "user", content: userMessage },
+    ];
     setMessages(updatedMessages);
 
     try {
-      const response = await axios.post('/api/ai/chat', {
+      const response = await axios.post("/api/ai", {
         userMessage,
         formData,
       });
 
       const aiResponse = response.data.choices[0].message.content;
-      setMessages((prev) => [...prev, { role: 'assistant', content: aiResponse }]);
-      setUserMessage('');
+      setMessages((prev) => [
+        ...prev,
+        { role: "assistant", content: aiResponse },
+      ]);
+      setUserMessage("");
     } catch (error) {
-      console.error('Error sending message:', error);
+      console.error("Error sending message:", error);
     }
   };
 
@@ -50,13 +58,16 @@ const ChatComponent = ({ formData, initialAnswer }: ChatComponentProps) => {
         {messages.map((message, index) => (
           <div
             key={index}
-            className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}
+            className={`flex ${
+              message.role === "user" ? "justify-end" : "justify-start"
+            }`}
           >
             <div
-              className={`max-w-xs px-4 py-2 rounded-lg ${message.role === 'user'
-                  ? 'bg-blue-500 text-white'
-                  : 'bg-gray-300 text-gray-800 dark:bg-gray-700 dark:text-white'
-                }`}
+              className={`max-w-xs px-4 py-2 rounded-lg ${
+                message.role === "user"
+                  ? "bg-blue-500 text-white"
+                  : "bg-gray-300 text-gray-800 dark:bg-gray-700 dark:text-white"
+              }`}
             >
               {message.content}
             </div>
