@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Button } from '../ui/button';
 import { ChevronLeft } from 'lucide-react';
 import { MutatingDots } from 'react-loader-spinner';
-
+import { BackgroundBeamsWithCollision } from "@/components/ui/background-beams-with-collision";
 interface AvatarUsageProps {
   onBack: () => void;
   formData: {
@@ -51,7 +51,8 @@ const AvatarUsage = ({ onBack, formData }: AvatarUsageProps) => {
   };
 
   return (
-    <div className="flex items-center justify-center h-screen bg-gray-100 dark:bg-gray-700">
+      <BackgroundBeamsWithCollision className="absolute inset-0 z-0">
+    <div className="z-10 flex items-center justify-center h-screen">
       <div className="flex flex-col items-center w-auto h-[530px] rounded-[25px] bg-[#F3F3F3] dark:bg-gray-800 p-8 shadow-[0px_8px_18px_11px_rgba(0,_0,_0,_0.1)]">
         {/* Header */}
         <span className="whitespace-nowrap text-[48px] mb-16 font-bold bg-gradient-to-r tracking-normal from-purple-500 to-blue-500 inline-block text-transparent bg-clip-text">
@@ -79,13 +80,14 @@ const AvatarUsage = ({ onBack, formData }: AvatarUsageProps) => {
       {/* Back Button */}
       <Button
         onClick={onBack}
-        className="ml-8 absolute left-[12%] w-[50px] h-[50px] text-[#2F74EE] dark:hover:scale-[110%] hover:scale-[110%]"
+        className="ml-8 absolute left-[12%] w-[50px] h-[50px] text-[#2F74EE] dark:text-white dark:bg-gray-800 dark:hover:text-[#2F74EE] dark:hover:scale-[110%] hover:scale-[110%]"
         variant="outline"
         size="icon"
       >
         <ChevronLeft />
       </Button>
     </div>
+      </BackgroundBeamsWithCollision>
   );
 };
 
