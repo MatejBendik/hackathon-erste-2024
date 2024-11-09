@@ -36,7 +36,7 @@ export async function POST(req) {
         Financial Situation and Goals: ${formData.financial_situation_and_goals},
         Relationships and Family: ${formData.relationships_and_family},
         Preferred Hobbies and Activities: ${formData.preffered_hobbies_and_activities}.
-        Your current age is future age so it's ${formData.future_age} years old.
+        Your current age is the future age user provided, so it's ${formData.future_age} years old. Play it like that.
       `,
     };
 
