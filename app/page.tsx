@@ -3,7 +3,6 @@ import { Button } from "@/components/ui/button";
 import { BackgroundBeamsWithCollision } from "@/components/ui/background-beams-with-collision";
 
 export default function Home() {
-
   return (
     <BackgroundBeamsWithCollision>
       <div className="flex flex-col items-center">
@@ -19,11 +18,13 @@ export default function Home() {
         </div>
         <div>
           <Button asChild size="lg">
-            <Link href={{
-              pathname: "/avatar",
-              query: { mode: "create" }
-            }}>
-              Create Your Avatar
+            <Link
+              href={{
+                pathname: "/avatar",
+                query: { mode: "create" },
+              }}
+            >
+              Create Your AI Avatar
             </Link>
           </Button>
         </div>
