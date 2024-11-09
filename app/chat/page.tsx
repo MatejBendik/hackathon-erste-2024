@@ -66,8 +66,6 @@ const ChatComponent = () => {
         formData,
       });
 
-      console.log({ response });
-
       const aiResponse = response.data.response;
       setMessages((prev) => [
         ...prev,
@@ -87,29 +85,31 @@ const ChatComponent = () => {
 
   const formatMessage = (text: string) => {
     return text.split(/\n/).map((line, index) => {
+      // Split line into segments, detect bold text (**bold**) and numbered list (1. item)
       const formattedLine = line.split(/(\*\*[^*]+\*\*)/).map((segment, i) => {
+        // Check for bold text
         if (segment.startsWith("**") && segment.endsWith("**")) {
           return (
-            <strong key={i} className="font-semibold text-blue-600">
+            <strong key={i} className="font-semibold text-blue-600 dark:text-blue-500">
               {segment.slice(2, -2)}
             </strong>
           );
-        } else if (segment.match(/^\d+\.\s/)) {
-          return (
-            <li key={i} className="list-decimal ml-6">
-              {segment.replace(/^\d+\.\s/, "")}
-            </li>
-          );
-        } else if (segment.startsWith("* ")) {
+        }
+
+        // Handle unordered list (* item)
+        else if (segment.startsWith("* ")) {
           return (
             <li key={i} className="list-disc ml-6">
               {segment.replace("* ", "")}
             </li>
           );
         }
+
+        // Default case, return the segment as plain text
         return segment;
       });
 
+      // Wrap the formatted line into a <p> tag for each new line
       return (
         <p key={index} className="mb-2">
           {formattedLine}
@@ -118,6 +118,7 @@ const ChatComponent = () => {
     });
   };
 
+
   return (
     <BackgroundBeamsWithCollision className="inset-0 z-0">
       <div className="z-10 flex flex-col h-screen p-6 ">
@@ -125,16 +126,14 @@ const ChatComponent = () => {
           {messages.map((message, index) => (
             <div
               key={index}
-              className={`flex ${
-                message.role === "user" ? "justify-end" : "justify-start"
-              }`}
+              className={`flex ${message.role === "user" ? "justify-end" : "justify-start"
+                }`}
             >
               <div
-                className={`max-w-xl px-4 py-2 rounded-lg ${
-                  message.role === "user"
-                    ? "bg-blue-500 text-white"
-                    : "bg-gray-300 text-gray-800 dark:bg-gray-700 dark:text-white"
-                }`}
+                className={`max-w-xl px-4 py-2 rounded-lg ${message.role === "user"
+                  ? "bg-blue-500 text-white"
+                  : "bg-gray-300 text-gray-800 dark:bg-gray-700 dark:text-white"
+                  }`}
               >
                 {message.role === "assistant" ? (
                   <div className="space-y-2">
