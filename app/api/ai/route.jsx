@@ -12,7 +12,8 @@ export async function POST(request) {
       name,
       gender,
       interests,
-      date_of_birth,
+      age,
+      future_age,
       job,
       goals,
       habits,
@@ -26,7 +27,8 @@ export async function POST(request) {
       name: name || "Unknown",
       gender: gender || "Unknown",
       interests: Array.isArray(interests) ? interests : ["Fitness", "Health"],
-      date_of_birth: date_of_birth || "Unknown",
+      age: age || "Unknown",
+      future_age: future_age || "Unknown",
       job: job || "Unknown",
       goals: Array.isArray(goals)
         ? goals
@@ -48,7 +50,7 @@ export async function POST(request) {
           content: [
             {
               type: "text",
-              text: "What will happen with me in the future. Keep the response short and simple.",
+              text: "What will happen with me in the future. Keep the response short and simple. Don't respond negatively.",
             },
           ],
         },
@@ -57,7 +59,7 @@ export async function POST(request) {
           content: [
             {
               type: "text",
-              text: "Help me with my future. Give me some advices based on my personal information. Keep the response short and simple.",
+              text: "Help me with my future. Give me some advices based on my personal information. Don't respond negatively. Keep the response short and simple.",
             },
           ],
           tool_calls: [
@@ -86,7 +88,7 @@ export async function POST(request) {
           content: [
             {
               type: "text",
-              text: "Based on your personal information, give me some advice on how to improve your future. Keep the response short and simple.",
+              text: "Based on your personal information, give me some advice on how to improve your future. Don't respond negatively. Keep the response short and simple.",
             },
           ],
         },

@@ -27,7 +27,8 @@ export async function POST(req) {
       content: `You are an AI that has detailed knowledge about the user. The user's details are as follows:
         Name: ${formData.name},
         Gender: ${formData.gender},
-        Birth Date: ${formData.birthDate},
+        Age: ${formData.age},
+        Future Age: ${formData.future_age},
         Hobbies: ${formData.hobbies},
         Education and Work Experience: ${formData.education_and_work_experience},
         Long-term Goals and Dreams: ${formData.long_term_goals_and_dreams},
