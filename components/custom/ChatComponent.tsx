@@ -121,11 +121,16 @@ const ChatComponent = ({ formData, initialAnswer }: ChatComponentProps) => {
         </div>
         <div className="flex items-center space-x-2">
           <input
-            type="text"
-            value={userMessage}
-            onChange={(e) => setUserMessage(e.target.value)}
-            placeholder="Type a message..."
-            className="flex-grow p-2 border border-gray-300 rounded-lg dark:bg-gray-800 dark:text-white dark:border-gray-600"
+              type="text"
+              value={userMessage}
+              onChange={(e) => setUserMessage(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  handleSendMessage();
+                }
+              }}
+              placeholder="Type a message..."
+              className="flex-grow p-2 border border-gray-300 rounded-lg dark:bg-gray-800 dark:text-white dark:border-gray-600"
           />
           <button
             onClick={handleSendMessage}
