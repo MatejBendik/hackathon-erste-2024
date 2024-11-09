@@ -102,7 +102,7 @@ const AvatarUsage = ({ onBack, formData }: AvatarUsageProps) => {
 
         <Button
           onClick={onBack}
-          className="ml-8 absolute left-[20%] w-[50px] h-[50px] text-[#2F74EE] dark:text-white dark:bg-gray-800 dark:hover:text-[#2F74EE] dark:hover:scale-[110%] hover:scale-[110%]"
+          className="ml-8 absolute left-[18%] w-[50px] h-[50px] text-[#2F74EE] dark:text-white dark:bg-gray-800 dark:hover:text-[#2F74EE] dark:hover:scale-[110%] hover:scale-[110%]"
           variant="outline"
           size="icon"
         >
