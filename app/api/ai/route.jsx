@@ -86,14 +86,14 @@ export async function POST(request) {
           content: [
             {
               type: "text",
-              text: "Your future is bright. You will achieve your goals and live a happy life.",
+              text: "Based on your personal information, give me some advice on how to improve your future.",
             },
           ],
         },
       ],
       temperature: 0.7,
-      max_tokens: 302,
-      top_p: 1,
+      max_tokens: 150,
+      top_p: 0.9,
       frequency_penalty: 0,
       presence_penalty: 0,
       tools: [

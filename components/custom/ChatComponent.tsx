@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import axios from "axios";
+import { BackgroundBeamsWithCollision } from "@/components/ui/background-beams-with-collision";
 
 interface ChatComponentProps {
   formData: {
@@ -36,6 +37,7 @@ const ChatComponent = ({ formData, initialAnswer }: ChatComponentProps) => {
       { role: "user", content: userMessage },
     ];
     setMessages(updatedMessages);
+    setUserMessage("");  // Clear the input field immediately after sending
 
     try {
       const response = await axios.post("/api/ai", {
@@ -48,7 +50,6 @@ const ChatComponent = ({ formData, initialAnswer }: ChatComponentProps) => {
         ...prev,
         { role: "assistant", content: aiResponse },
       ]);
-      setUserMessage("");
     } catch (error) {
       console.error("Error sending message:", error);
     }
@@ -83,8 +84,10 @@ const ChatComponent = ({ formData, initialAnswer }: ChatComponentProps) => {
   };
 
   return (
-    <div className="flex flex-col h-screen p-6 bg-gray-100 dark:bg-gray-800">
-      <div className="flex-grow overflow-y-auto mt-20 p-4 mb-4 space-y-4 bg-white dark:bg-gray-900 rounded-lg shadow-lg">
+      <BackgroundBeamsWithCollision className="inset-0 z-0">
+    <div className="z-10 flex flex-col h-screen p-6 ">
+
+      <div className=" flex-grow overflow-y-auto mt-20 p-4 mb-4 space-y-4 rounded-lg">
         {messages.map((message, index) => (
           <div
             key={index}
@@ -120,7 +123,10 @@ const ChatComponent = ({ formData, initialAnswer }: ChatComponentProps) => {
           Send
         </button>
       </div>
+
     </div>
+      </BackgroundBeamsWithCollision>
+
   );
 };
 
