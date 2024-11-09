@@ -37,10 +37,11 @@ const ChatComponent = ({ formData, initialAnswer }: ChatComponentProps) => {
       { role: "user", content: userMessage },
     ];
     setMessages(updatedMessages);
-    setUserMessage("");  // Clear the input field immediately after sending
+    setUserMessage("");
 
     try {
-      const response = await axios.post("/api/ai", {
+      const response = await axios.post("/api/ai/chat", {
+        messages,
         userMessage,
         formData,
       });
