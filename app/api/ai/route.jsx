@@ -13,7 +13,7 @@ export async function POST(request) {
       gender,
       interests,
       age,
-      future_age,
+      futureAge,
       job,
       goals,
       habits,
@@ -28,7 +28,7 @@ export async function POST(request) {
       gender: gender || "Unknown",
       interests: Array.isArray(interests) ? interests : ["Fitness", "Health"],
       age: age || "Unknown",
-      future_age: future_age || "Unknown",
+      futureAge: futureAge || "Unknown",
       job: job || "Unknown",
       goals: Array.isArray(goals)
         ? goals
