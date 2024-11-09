@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { Button } from '../ui/button';
 import { ChevronLeft } from 'lucide-react';
-import ChatComponent from './ChatComponent';
 import { MutatingDots } from 'react-loader-spinner';
 import { BackgroundBeamsWithCollision } from "@/components/ui/background-beams-with-collision";
 
