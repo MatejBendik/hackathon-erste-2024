@@ -94,7 +94,7 @@ const AvatarDetails = ({
           {/* Next Button */}
           <Button
               onClick={onNext}
-              className="w-[50px] h-[50px] text-[#2F74EE] dark:text-white dark:bg-gray-800 dark:hover:text-[#2F74EE] dark:hover:scale-[110%] hover:scale-[110%]"
+              className="w-[50px] h-[50px]   dark:text-white dark:bg-gray-800 dark:hover:text-[#2F74EE] hover:scale-[110%]"
               variant="outline"
               size="icon"
           >
