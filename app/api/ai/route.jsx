@@ -57,7 +57,7 @@ export async function POST(request) {
           content: [
             {
               type: "text",
-              text: "Je toto hardcoded response?",
+              text: "Help me with my future. Give me some advices based on my personal information.",
             },
           ],
           tool_calls: [
